@@ -1,6 +1,7 @@
 import wx
 import sys
 from documents.text import TextDocument
+from . import dialogs
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -17,6 +18,10 @@ class MainFrame(wx.Frame):
 		self.m_close = self.file_menu.Append(wx.ID_ANY, "E&xit")
 		self.Bind(wx.EVT_MENU, self.on_close, self.m_close)
 		self.menu_bar.Append(self.file_menu, "&File")
+		self.navigation_menu = wx.Menu()
+		self.m_goto = self.navigation_menu.Append(wx.ID_ANY, "&Goto... (Control+G)")
+		self.Bind(wx.EVT_MENU, self.on_goto, self.m_goto)
+		self.menu_bar.Append(self.navigation_menu, "&Navigation")
 		self.SetMenuBar(self.menu_bar)
 		self.reader_t = wx.StaticText(parent=self.panel, pos=(0, 90))
 		self.reader_t.SetLabel("&Text")
@@ -25,6 +30,7 @@ class MainFrame(wx.Frame):
 		self.main_box.Add(self.reader, 0, wx.ALL, 10)
 		self.Bind(wx.EVT_CLOSE, self.on_close)
 		self.accel.append((wx.ACCEL_CTRL, ord("O"), self.m_open.GetId()))
+		self.accel.append((wx.ACCEL_CTRL, ord("G"), self.m_goto.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
@@ -44,3 +50,7 @@ class MainFrame(wx.Frame):
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
 			self.reader.SetValue(text)
+
+	def on_goto(self, event=None):
+		dlg = dialogs.GotoDialog(self)
+		dlg.Show()
