@@ -4,7 +4,7 @@ from gui import main
 class Application:
 	def __init__(self):
 		self.name = "Quinread"
-		self.version = "0.10"
+		self.version = "0.11"
 		self.running = False
 		self.wx = wx.App()
 		self.main_frame = main.MainFrame(self)
