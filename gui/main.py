@@ -5,12 +5,13 @@ from documents.text import TextDocument
 class MainFrame(wx.Frame):
 	def __init__(self, app):
 		self.app = app
+		self.accel = []
 		wx.Frame.__init__(self, None, title=f"{self.app.name} V{self.app.version}", size=wx.DefaultSize)
 		self.panel = wx.Panel(self)
 		self.main_box = wx.BoxSizer(wx.VERTICAL)
 		self.menu_bar = wx.MenuBar()
 		self.file_menu = wx.Menu()
-		self.m_open = self.file_menu.Append(wx.ID_ANY, "&Open")
+		self.m_open = self.file_menu.Append(wx.ID_ANY, "&Open (Control+O)")
 		self.Bind(wx.EVT_MENU, self.on_open, self.m_open)
 		self.file_menu.AppendSeparator()
 		self.m_close = self.file_menu.Append(wx.ID_ANY, "E&xit")
@@ -23,6 +24,9 @@ class MainFrame(wx.Frame):
 		self.reader = wx.TextCtrl(parent=self.panel, pos=(0, 100), size=(1166, 768), style=wx.TE_READONLY | wx.TE_MULTILINE | wx.TE_PROCESS_ENTER | wx.TE_RICH2 | wx.TE_AUTO_URL | wx.TE_NOHIDESEL)
 		self.main_box.Add(self.reader, 0, wx.ALL, 10)
 		self.Bind(wx.EVT_CLOSE, self.on_close)
+		self.accel.append((wx.ACCEL_CTRL, ord("O"), self.m_open.GetId()))
+		self.accel_table = wx.AcceleratorTable(self.accel)
+		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
 
 	def on_close(self, event=None):

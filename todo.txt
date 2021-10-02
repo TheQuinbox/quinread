@@ -9,4 +9,3 @@ Add mobi reading
 Add the ability to jump to lines.
 Add position saving, on a per-document basis
 Add export to text.
-Add an accel table.
