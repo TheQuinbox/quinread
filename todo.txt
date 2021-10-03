@@ -9,3 +9,4 @@ Add mobi reading
 Add the ability to jump to lines.
 Add position saving, on a per-document basis
 Add export to text.
+Make goto line actuall go to the propper line. It seems to be off slightly. For example, going to line 300 takes you to line 266
