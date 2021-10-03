@@ -20,4 +20,4 @@ class Application:
 
 	def load_config(self):
 		self.config = custom_tweak.Config(name=self.name, autosave=True, custom_path=os.getcwd())
-		self.config.loaded_documents = self.config.get("loaded_documents", {})
+		self.config.loaded_documents = self.config.get("loaded_documents", [])
