@@ -6,7 +6,6 @@ Add HTML reading.
 Add PPTX reading.
 Add RTF reading.
 Add mobi reading
-Add the ability to jump to lines.
 Add position saving, on a per-document basis
 Add export to text.
 Try to make goto line respect word wrap.
