@@ -35,7 +35,7 @@ class GotoDialog(wx.Dialog):
 			self.Destroy()
 			return
 		if line <= self.frame.reader.GetNumberOfLines() and line > 0:
-			pos = self.frame.reader.XYToPosition(0, line)
+			pos = self.frame.reader.XYToPosition(0, line - 1)
 			self.frame.reader.SetInsertionPoint(pos)
 			self.Destroy()
 		else:
