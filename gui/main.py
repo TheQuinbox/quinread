@@ -26,7 +26,7 @@ class MainFrame(wx.Frame):
 		self.reader_t = wx.StaticText(parent=self.panel, pos=(0, 90))
 		self.reader_t.SetLabel("&Text")
 		self.main_box.Add(self.reader_t, 0, wx.ALL, 10)
-		self.reader = wx.TextCtrl(parent=self.panel, pos=(0, 100), size=(1166, 768), style=wx.TE_READONLY | wx.TE_MULTILINE | wx.TE_PROCESS_ENTER | wx.TE_RICH2 | wx.TE_AUTO_URL | wx.TE_NOHIDESEL)
+		self.reader = wx.TextCtrl(parent=self.panel, pos=(0, 100), size=(1166, 768), style=wx.TE_READONLY | wx.TE_MULTILINE | wx.TE_PROCESS_ENTER | wx.TE_RICH2 | wx.TE_AUTO_URL | wx.TE_NOHIDESEL| wx.TE_DONTWRAP)
 		self.main_box.Add(self.reader, 0, wx.ALL, 10)
 		self.Bind(wx.EVT_CLOSE, self.on_close)
 		self.accel.append((wx.ACCEL_CTRL, ord("O"), self.m_open.GetId()))
