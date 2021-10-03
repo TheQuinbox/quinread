@@ -46,6 +46,8 @@ class MainFrame(wx.Frame):
 				document = TextDocument(dialog.GetPath())
 				text = document.read()
 				document.close()
+				if dialog.GetPath() not in self.app.config.loaded_documents:
+					self.app.config.loaded_documents[dialog.GetPath()] = 0
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
