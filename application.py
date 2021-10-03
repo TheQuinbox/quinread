@@ -9,7 +9,7 @@ class Application:
 		self.version = "0.11"
 		self.running = False
 		self.config = None
-		self.load_config
+		self.load_config()
 		self.wx = wx.App()
 		self.main_frame = main.MainFrame(self)
 
@@ -20,3 +20,4 @@ class Application:
 
 	def load_config(self):
 		self.config = custom_tweak.Config(name=self.name, autosave=True, custom_path=os.getcwd())
+		self.config.loaded_documents = self.config.get("loaded_documents", {})
