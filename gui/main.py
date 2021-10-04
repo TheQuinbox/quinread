@@ -9,6 +9,7 @@ from documents.epub import EpubDocument
 from documents.markdown import MarkdownDocument
 from documents.html import HtmlDocument
 from documents.rtf import RtfDocument
+import utils
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -23,6 +24,9 @@ class MainFrame(wx.Frame):
 		self.file_menu = wx.Menu()
 		self.m_open = self.file_menu.Append(wx.ID_ANY, "&Open (Control+O)")
 		self.Bind(wx.EVT_MENU, self.on_open, self.m_open)
+		self.file_menu.AppendSeparator()
+		self.m_word_count = self.file_menu.Append(wx.ID_ANY, "&Word count (Control+W)")
+		self.Bind(wx.EVT_MENU,  self.on_word_count, self.m_word_count)
 		self.file_menu.AppendSeparator()
 		self.m_close = self.file_menu.Append(wx.ID_ANY, "E&xit")
 		self.Bind(wx.EVT_MENU, self.on_close, self.m_close)
@@ -40,6 +44,7 @@ class MainFrame(wx.Frame):
 		self.Bind(wx.EVT_CLOSE, self.on_close)
 		self.accel.append((wx.ACCEL_CTRL, ord("O"), self.m_open.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("G"), self.m_goto.GetId()))
+		self.accel.append((wx.ACCEL_CTRL, ord("W"), self.m_word_count.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
@@ -87,3 +92,10 @@ class MainFrame(wx.Frame):
 	def on_timer(self):	
 		if self.path != "":
 			self.app.config.loaded_documents[self.path] = self.reader.GetInsertionPoint()
+
+	def on_word_count(self, event=None):
+		content = self.reader.GetValue()
+		word_list = content.split(" ")
+		count = len(word_list)
+		del word_list
+		wx.MessageBox(f"This document contains {count} {utils.plural(count, 'word', 'words')}", "Word count")
