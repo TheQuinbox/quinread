@@ -10,6 +10,7 @@ from documents.markdown import MarkdownDocument
 from documents.html import HtmlDocument
 from documents.rtf import RtfDocument
 import utils
+from documents.powerpoint import PptxDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -75,6 +76,8 @@ class MainFrame(wx.Frame):
 				document = HtmlDocument(dialog.GetPath())
 			elif self.path.lower().endswith(".rtf"):
 				document = RtfDocument(dialog.GetPath())
+			elif self.path.lower().endswith(".pptx"):
+				document = PptxDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
