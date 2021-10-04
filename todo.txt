@@ -1,4 +1,3 @@
-Add PDF reading.
 Add DOCX reading.
 Add epub reading.
 Add markdown reading.

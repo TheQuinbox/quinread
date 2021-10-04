@@ -3,6 +3,7 @@ import sys
 from documents.text import TextDocument
 from . import dialogs
 from repeating_timer import RepeatingTimer
+from documents.pdf import PdfDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -49,11 +50,15 @@ class MainFrame(wx.Frame):
 		if dialog.ShowModal() == wx.ID_OK:
 			if dialog.GetPath().lower().endswith(".txt"):
 				document = TextDocument(dialog.GetPath())
-				text = document.read()
-				document.close()
+			if dialog.GetPath().lower().endswith(".txt"):
+				document = TextDocument(dialog.GetPath())
+			elif dialog.GetPath().lower().endswith(".pdf"):
+				document = PdfDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
+			text = document.read()
+			document.close()
 			self.reader.SetValue(text)
 			self.path = dialog.GetPath()
 			if self.path not in self.app.config.loaded_documents:

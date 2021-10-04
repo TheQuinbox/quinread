@@ -1,2 +1,4 @@
 wxpython
 nuitka
+pyxpdf
+pyxpdf_Data
