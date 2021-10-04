@@ -61,23 +61,23 @@ class MainFrame(wx.Frame):
 		if dialog.ShowModal() == wx.ID_OK:
 			self.path = dialog.GetPath()
 			if self.path.lower().endswith(".txt"):
-				document = TextDocument(dialog.GetPath())
+				document = TextDocument(self.path)
 			elif self.path.lower().endswith(".txt"):
-				document = TextDocument(dialog.GetPath())
+				document = TextDocument(self.path)
 			elif self.path.lower().endswith(".pdf"):
-				document = PdfDocument(dialog.GetPath())
+				document = PdfDocument(self.path)
 			elif self.path.lower().endswith(".docx"):
-				document = DocxDocument(dialog.GetPath())
+				document = DocxDocument(self.path)
 			elif self.path.lower().endswith(".epub"):
-				document = EpubDocument(dialog.GetPath())
+				document = EpubDocument(self.path)
 			elif self.path.lower().endswith(".md"):
-				document = MarkdownDocument(dialog.GetPath())
+				document = MarkdownDocument(self.path)
 			elif self.path.lower().endswith(".html") or self.path.lower().endswith(".htm"):
-				document = HtmlDocument(dialog.GetPath())
+				document = HtmlDocument(self.path)
 			elif self.path.lower().endswith(".rtf"):
-				document = RtfDocument(dialog.GetPath())
+				document = RtfDocument(self.path)
 			elif self.path.lower().endswith(".pptx"):
-				document = PptxDocument(dialog.GetPath())
+				document = PptxDocument(self.path)
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
