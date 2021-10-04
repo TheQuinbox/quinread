@@ -2,12 +2,14 @@ import wx
 import sys
 from documents.text import TextDocument
 from . import dialogs
+from repeating_timer import RepeatingTimer
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
 		self.app = app
 		self.accel = []
 		self.path = ""
+		self.timer = RepeatingTimer(1.0, self.on_timer)
 		wx.Frame.__init__(self, None, title=f"{self.app.name} V{self.app.version}", size=wx.DefaultSize)
 		self.panel = wx.Panel(self)
 		self.main_box = wx.BoxSizer(wx.VERTICAL)
@@ -35,6 +37,7 @@ class MainFrame(wx.Frame):
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
+		self.timer.start()
 
 	def on_close(self, event=None):
 		self.Destroy()
@@ -58,3 +61,6 @@ class MainFrame(wx.Frame):
 	def on_goto(self, event=None):
 		dlg = dialogs.GotoDialog(self)
 		dlg.Show()
+
+	def on_timer(self):	
+		self.app.config.loaded_documents[self.path] = self.reader_t.GetInsertionPoint()
