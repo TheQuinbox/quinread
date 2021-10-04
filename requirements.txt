@@ -5,3 +5,4 @@ pyxpdf_Data
 ebooklib
 bs4
 markdown
+html2text
