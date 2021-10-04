@@ -53,21 +53,22 @@ class MainFrame(wx.Frame):
 	def on_open(self, event=None):
 		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
 		if dialog.ShowModal() == wx.ID_OK:
-			if dialog.GetPath().lower().endswith(".txt"):
+			self.path = dialog.GetPath()
+			if self.path.lower().endswith(".txt"):
 				document = TextDocument(dialog.GetPath())
-			if dialog.GetPath().lower().endswith(".txt"):
+			elif self.path.lower().endswith(".txt"):
 				document = TextDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".pdf"):
+			elif self.path.lower().endswith(".pdf"):
 				document = PdfDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".docx"):
+			elif self.path.lower().endswith(".docx"):
 				document = DocxDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".epub"):
+			elif self.path.lower().endswith(".epub"):
 				document = EpubDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".md"):
+			elif self.path.lower().endswith(".md"):
 				document = MarkdownDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".html") or dialog.GetPath().lower().endswith(".htm"):
+			elif self.path.lower().endswith(".html") or self.path.lower().endswith(".htm"):
 				document = HtmlDocument(dialog.GetPath())
-			elif dialog.GetPath().lower().endswith(".rtf"):
+			elif self.path.lower().endswith(".rtf"):
 				document = RtfDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
@@ -75,7 +76,6 @@ class MainFrame(wx.Frame):
 			text = document.read()
 			document.close()
 			self.reader.SetValue(text)
-			self.path = dialog.GetPath()
 			if self.path not in self.app.config.loaded_documents:
 				self.app.config.loaded_documents[self.path] = 0
 			self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
