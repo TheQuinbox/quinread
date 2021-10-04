@@ -7,6 +7,7 @@ class MainFrame(wx.Frame):
 	def __init__(self, app):
 		self.app = app
 		self.accel = []
+		self.path = ""
 		wx.Frame.__init__(self, None, title=f"{self.app.name} V{self.app.version}", size=wx.DefaultSize)
 		self.panel = wx.Panel(self)
 		self.main_box = wx.BoxSizer(wx.VERTICAL)
@@ -50,8 +51,9 @@ class MainFrame(wx.Frame):
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
 			self.reader.SetValue(text)
-			if dialog.GetPath() not in self.app.config.loaded_documents:
-				self.app.config.loaded_documents[dialog.GetPath()] = 0
+			self.path = dialog.GetPath()
+			if self.path not in self.app.config.loaded_documents:
+				self.app.config.loaded_documents[self.path] = 0
 
 	def on_goto(self, event=None):
 		dlg = dialogs.GotoDialog(self)
