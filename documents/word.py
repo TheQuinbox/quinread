@@ -21,10 +21,10 @@ class DocDocument(BaseDocument):
 		self.path = path
 
 	def read(self):
-		self.document = open(self.path, "r", encoding="utf-8")
+		self.document = open(self.path, "r", encoding="ISO-8859-1")
 		soup = BeautifulSoup(self.document.read())
-		[s.extract() for s in self.document(["style", "script"])]
-		temp_text = self.document.get_text()
+		[s.extract() for s in soup(["style", "script"])]
+		temp_text = soup.get_text()
 		text = "".join("".join(temp_text.split("\t")).split("\n")).encode("utf-8").strip()
 		return text
 
