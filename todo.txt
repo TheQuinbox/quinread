@@ -7,3 +7,5 @@ Add anotations
 Add CHM parsing.
 Allow reloading of the last opened document.
 Add an options dialog.
+Add autoupdate.
+Add registration.
