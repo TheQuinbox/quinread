@@ -2,3 +2,7 @@ Add PPTX reading.
 Add mobi reading
 Add export to text.
 Try to make goto line respect word wrap.
+Add a find dialog.
+Add word count.
+Add bookmarks
+Add anotations
