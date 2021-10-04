@@ -59,6 +59,7 @@ class MainFrame(wx.Frame):
 	def on_open(self, event=None):
 		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
 		if dialog.ShowModal() == wx.ID_OK:
+			old_path = self.path
 			self.path = dialog.GetPath()
 			if self.path.lower().endswith(".txt"):
 				document = TextDocument(self.path)
@@ -80,6 +81,7 @@ class MainFrame(wx.Frame):
 				document = PptxDocument(self.path)
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
+				self.path = old_path
 				return
 			text = document.read()
 			document.close()
