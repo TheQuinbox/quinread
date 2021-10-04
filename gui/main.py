@@ -4,7 +4,7 @@ from documents.text import TextDocument
 from . import dialogs
 from repeating_timer import RepeatingTimer
 from documents.pdf import PdfDocument
-from documents.word import DocxDocument
+from documents.word import DocxDocument, DocDocument
 from documents.epub import EpubDocument
 from documents.markdown import MarkdownDocument
 from documents.html import HtmlDocument
@@ -75,6 +75,8 @@ class MainFrame(wx.Frame):
 				document = HtmlDocument(dialog.GetPath())
 			elif self.path.lower().endswith(".rtf"):
 				document = RtfDocument(dialog.GetPath())
+			elif self.path.lower().endswith(".doc"):
+				document = DocDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
