@@ -95,7 +95,5 @@ class MainFrame(wx.Frame):
 
 	def on_word_count(self, event=None):
 		content = self.reader.GetValue()
-		word_list = content.split(" ")
-		count = len(word_list)
-		del word_list
+		count = utils.count_words(content)
 		wx.MessageBox(f"This document contains {count} {utils.plural(count, 'word', 'words')}", "Word count")

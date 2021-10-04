@@ -3,3 +3,9 @@ def plural(number, singular, multiple):
 		return singular
 	else:
 		return multiple
+
+def count_words(text):
+	word_list = content.split(" ")
+	count = len(word_list)
+	del word_list
+	return count
