@@ -13,6 +13,7 @@ class PptxDocument(BaseDocument):
 				if hasattr(shape, "text"):
 					final += f"{shape.text}\n"
 			final += "\n"
+		final = final.rstrip()
 		return final
 
 	def close(self):
