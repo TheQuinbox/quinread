@@ -12,6 +12,7 @@ class PptxDocument(BaseDocument):
 			for shape in slide.shapes:
 				if hasattr(shape, "text"):
 					final += f"{shape.text}\n"
+			final += "\n"
 		return final
 
 	def close(self):
