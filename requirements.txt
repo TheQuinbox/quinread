@@ -6,3 +6,4 @@ ebooklib
 bs4
 markdown
 html2text
+striprtf

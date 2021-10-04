@@ -8,6 +8,7 @@ from documents.word import DocxDocument
 from documents.epub import EpubDocument
 from documents.markdown import MarkdownDocument
 from documents.html import HtmlDocument
+from documents.rtf import RtfDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -66,6 +67,8 @@ class MainFrame(wx.Frame):
 				document = MarkdownDocument(dialog.GetPath())
 			elif dialog.GetPath().lower().endswith(".html") or dialog.GetPath().lower().endswith(".htm"):
 				document = HtmlDocument(dialog.GetPath())
+			elif dialog.GetPath().lower().endswith(".rtf"):
+				document = RtfDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return

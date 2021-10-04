@@ -1,5 +1,4 @@
 Add PPTX reading.
-Add RTF reading.
 Add mobi reading
 Add export to text.
 Try to make goto line respect word wrap.
