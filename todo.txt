@@ -5,3 +5,4 @@ Add a find dialog.
 Add bookmarks
 Add anotations
 Add CHM parsing.
+Allow reloading of the last opened document.
