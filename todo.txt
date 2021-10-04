@@ -1,4 +1,3 @@
-Add markdown reading.
 Add HTML reading.
 Add PPTX reading.
 Add RTF reading.

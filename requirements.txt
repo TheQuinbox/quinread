@@ -4,3 +4,4 @@ pyxpdf
 pyxpdf_Data
 ebooklib
 bs4
+markdown

@@ -6,6 +6,7 @@ from repeating_timer import RepeatingTimer
 from documents.pdf import PdfDocument
 from documents.word import DocxDocument
 from documents.epub import EpubDocument
+from documents.markdown import MarkdownDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -60,6 +61,8 @@ class MainFrame(wx.Frame):
 				document = DocxDocument(dialog.GetPath())
 			elif dialog.GetPath().lower().endswith(".epub"):
 				document = EpubDocument(dialog.GetPath())
+			elif dialog.GetPath().lower().endswith(".md"):
+				document = MarkdownDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
