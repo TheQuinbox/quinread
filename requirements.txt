@@ -2,3 +2,5 @@ wxpython
 nuitka
 pyxpdf
 pyxpdf_Data
+ebooklib
+bs4
