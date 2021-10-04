@@ -49,6 +49,12 @@ class MainFrame(wx.Frame):
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
+		if self.app.config.last_loaded != "":
+			text = self.load_file(self.app.config.last_loaded)
+			if text == "":
+				return
+			else:
+				self.reader.SetValue(text)
 		self.timer.start()
 
 	def on_close(self, event=None):
@@ -56,35 +62,41 @@ class MainFrame(wx.Frame):
 		self.timer.stop()
 		sys.exit()
 
+	def load_file(self, path):
+		if path.lower().endswith(".txt"):
+			document = TextDocument(path)
+		elif path.lower().endswith(".txt"):
+			document = TextDocument(path)
+		elif path.lower().endswith(".pdf"):
+			document = PdfDocument(path)
+		elif path.lower().endswith(".docx"):
+			document = DocxDocument(path)
+		elif path.lower().endswith(".epub"):
+			document = EpubDocument(path)
+		elif path.lower().endswith(".md"):
+			document = MarkdownDocument(path)
+		elif path.lower().endswith(".html") or self.path.lower().endswith(".htm"):
+			document = HtmlDocument(path)
+		elif path.lower().endswith(".rtf"):
+			document = RtfDocument(path)
+		elif path.lower().endswith(".pptx"):
+			document = PptxDocument(path)
+		else:
+			wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
+			return ""
+		text = document.read()
+		document.close()
+		self.path = path
+		return text
+
 	def on_open(self, event=None):
 		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
 		if dialog.ShowModal() == wx.ID_OK:
 			old_path = self.path
 			self.path = dialog.GetPath()
-			if self.path.lower().endswith(".txt"):
-				document = TextDocument(self.path)
-			elif self.path.lower().endswith(".txt"):
-				document = TextDocument(self.path)
-			elif self.path.lower().endswith(".pdf"):
-				document = PdfDocument(self.path)
-			elif self.path.lower().endswith(".docx"):
-				document = DocxDocument(self.path)
-			elif self.path.lower().endswith(".epub"):
-				document = EpubDocument(self.path)
-			elif self.path.lower().endswith(".md"):
-				document = MarkdownDocument(self.path)
-			elif self.path.lower().endswith(".html") or self.path.lower().endswith(".htm"):
-				document = HtmlDocument(self.path)
-			elif self.path.lower().endswith(".rtf"):
-				document = RtfDocument(self.path)
-			elif self.path.lower().endswith(".pptx"):
-				document = PptxDocument(self.path)
-			else:
-				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
-				self.path = old_path
+			text = self.load_file(self.path)
+			if text == "":
 				return
-			text = document.read()
-			document.close()
 			self.reader.SetValue(text)
 			if self.path not in self.app.config.loaded_documents:
 				self.app.config.loaded_documents[self.path] = 0
