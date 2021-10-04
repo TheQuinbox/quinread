@@ -1,6 +1,6 @@
 from .base import BaseDocument
 import docx
-import win32com.client
+from bs4 import BeautifulSoup
 
 class DocxDocument(BaseDocument):
 	def __init__(self, path):
@@ -21,11 +21,11 @@ class DocDocument(BaseDocument):
 		self.path = path
 
 	def read(self):
-		word = win32com.client.Dispatch("Word.Application")
-		word.visible = False
-		self.document = word.Documents.Open(self.path)
-		doc = word.ActiveDocument
-		text = doc.Range().Text
+		self.document = open(self.path, "r", encoding="utf-8")
+		soup = BeautifulSoup(self.document.read())
+		[s.extract() for s in self.document(["style", "script"])]
+		temp_text = self.document.get_text()
+		text = "".join("".join(temp_text.split("\t")).split("\n")).encode("utf-8").strip()
 		return text
 
 	def close(self):

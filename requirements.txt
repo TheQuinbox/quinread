@@ -7,4 +7,3 @@ bs4
 markdown
 html2text
 striprtf
-pyiwn32
