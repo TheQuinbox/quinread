@@ -1,7 +1,7 @@
 import wx
 import sys
 from documents.text import TextDocument
-from . import dialogs
+from . import goto
 from repeating_timer import RepeatingTimer
 from documents.pdf import PdfDocument
 from documents.word import DocxDocument
@@ -92,7 +92,7 @@ class MainFrame(wx.Frame):
 			self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 
 	def on_goto(self, event=None):
-		dlg = dialogs.GotoDialog(self)
+		dlg = goto.GotoDialog(self)
 		dlg.Show()
 
 	def on_timer(self):	
