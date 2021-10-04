@@ -12,7 +12,7 @@ class HtmlDocument(BaseDocument):
 		text = self.document.read()
 		text2 = html2text.html2text(text)
 		html = markdown.markdown(text2)
-		final = "".join(BeautifulSoup(html, features="html").findAll(text=True))
+		final = "".join(BeautifulSoup(html, features="lxml").findAll(text=True))
 		return final
 
 	def close(self):
