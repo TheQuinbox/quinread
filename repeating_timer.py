@@ -1,28 +1,15 @@
 import threading
 
 class RepeatingTimer(threading.Thread):
-	def __init__(self, interval, function, daemon=True, *args, **kwargs):
+	def __init__(self, interval, function):
 		threading.Thread.__init__(self)
-		self.daemon = daemon
 		self.interval = interval
 		self.function = function
-		self.args = args
-		self.kwargs = kwargs
-		self.finished = threading.Event()
-		self.running = False
-
-	def cancel(self):
-		self.finished.set()
-	stop = cancel
+		self.stopped = threading.Event()
 
 	def run(self):
-		self.running = True
-		while not self.finished.is_set():
-			self.finished.wait(self.interval)
-			if self.finished.is_set():
-				self.running = False
-				return
-			try:
-				self.function(*self.args, **self.kwargs)
-			except:
-				pass
+		while not self.stopped.wait(self.interval):
+			self.function()
+
+	def stop(self):
+		self.stop.set()

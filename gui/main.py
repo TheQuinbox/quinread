@@ -41,6 +41,7 @@ class MainFrame(wx.Frame):
 
 	def on_close(self, event=None):
 		self.Destroy()
+		self.timer.stop()
 		sys.exit()
 
 	def on_open(self, event=None):
@@ -63,4 +64,5 @@ class MainFrame(wx.Frame):
 		dlg.Show()
 
 	def on_timer(self):	
-		self.app.config.loaded_documents[self.path] = self.reader_t.GetInsertionPoint()
+		if self.path != "":
+			self.app.config.loaded_documents[self.path] = self.reader.GetInsertionPoint()
