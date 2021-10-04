@@ -4,6 +4,7 @@ from documents.text import TextDocument
 from . import dialogs
 from repeating_timer import RepeatingTimer
 from documents.pdf import PdfDocument
+from documents.word import DocxDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -54,6 +55,8 @@ class MainFrame(wx.Frame):
 				document = TextDocument(dialog.GetPath())
 			elif dialog.GetPath().lower().endswith(".pdf"):
 				document = PdfDocument(dialog.GetPath())
+			elif dialog.GetPath().lower().endswith(".docx"):
+				document = DocxDocument(dialog.GetPath())
 			else:
 				wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 				return
