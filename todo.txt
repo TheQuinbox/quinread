@@ -6,6 +6,5 @@ Add HTML reading.
 Add PPTX reading.
 Add RTF reading.
 Add mobi reading
-Add position saving, on a per-document basis
 Add export to text.
 Try to make goto line respect word wrap.

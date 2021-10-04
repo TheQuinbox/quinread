@@ -58,6 +58,7 @@ class MainFrame(wx.Frame):
 			self.path = dialog.GetPath()
 			if self.path not in self.app.config.loaded_documents:
 				self.app.config.loaded_documents[self.path] = 0
+			self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 
 	def on_goto(self, event=None):
 		dlg = dialogs.GotoDialog(self)

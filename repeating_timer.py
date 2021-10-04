@@ -9,7 +9,10 @@ class RepeatingTimer(threading.Thread):
 
 	def run(self):
 		while not self.stopped.wait(self.interval):
-			self.function()
+			try:
+				self.function()
+			except:
+				pass
 
 	def stop(self):
-		self.stop.set()
+		self.stopped.set()
