@@ -1,7 +1,7 @@
 import wx
 import sys
 from documents.text import TextDocument
-from . import goto
+from . import goto, preferences
 from repeating_timer import RepeatingTimer
 from documents.pdf import PdfDocument
 from documents.word import DocxDocument
@@ -26,6 +26,9 @@ class MainFrame(wx.Frame):
 		self.m_open = self.file_menu.Append(wx.ID_ANY, "&Open (Control+O)")
 		self.Bind(wx.EVT_MENU, self.on_open, self.m_open)
 		self.file_menu.AppendSeparator()
+		self.m_preferences = self.file_menu.Append(wx.ID_ANY, "&Preferences (Control+P)")
+		self.Bind(wx.EVT_MENU, self.on_preferences, self.m_preferences)
+		self.file_menu.AppendSeparator()
 		self.m_close = self.file_menu.Append(wx.ID_ANY, "E&xit")
 		self.Bind(wx.EVT_MENU, self.on_close, self.m_close)
 		self.menu_bar.Append(self.file_menu, "&File")
@@ -46,15 +49,20 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("O"), self.m_open.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("G"), self.m_goto.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("W"), self.m_word_count.GetId()))
+		self.accel.append((wx.ACCEL_CTRL, ord("P"), self.m_preferences.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
-		if self.app.config.last_loaded != "":
+		if self.app.config.last_loaded != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded)
 			if text == "":
-				return
+				pass
 			else:
 				self.reader.SetValue(text)
+				if self.path not in self.app.config.loaded_documents:
+					self.app.config.loaded_documents[self.path] = 0
+					self.app.config.last_loaded = self.path
+				self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 		self.timer.start()
 
 	def on_close(self, event=None):
@@ -115,3 +123,7 @@ class MainFrame(wx.Frame):
 		content = self.reader.GetValue()
 		count = utils.count_words(content)
 		wx.MessageBox(f"This document contains {count} {utils.plural(count, 'word', 'words')}", "Word count")
+
+	def on_preferences(self, event=None):
+		dlg = preferences.PreferencesDialog(self.app)
+		dlg.Show()

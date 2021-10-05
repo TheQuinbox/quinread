@@ -5,6 +5,5 @@ Add a find dialog.
 Add bookmarks
 Add anotations
 Add CHM parsing.
-Add an options dialog.
 Add autoupdate.
 Add registration.

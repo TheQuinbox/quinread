@@ -22,3 +22,4 @@ class Application:
 		self.config = custom_tweak.Config(name=self.name, autosave=True, custom_path=os.getcwd())
 		self.config.loaded_documents = self.config.get("loaded_documents", {})
 		self.config.last_loaded = self.config.get("last_loaded", "")
+		self.config.load_previous = self.config.get("load_previous", True)
