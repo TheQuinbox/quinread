@@ -25,6 +25,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.24.
+
+* With certain EPub books (such as those from ZLib.org), chapters would sometimes show up twice. This has now been fixed.
+
 ### 0.23.
 
 * Added a readme!
