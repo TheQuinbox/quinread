@@ -10,6 +10,19 @@ Quinread is a fully accessible and powerful document reader, supporting many dif
 * Supports many common file types, such as EPub books, RTF documents, and PDF documents.
 * And much more!
 
+## Supported file types.
+
+Quinread supports quite a number of common file types. They are all listed below.
+
+* EPub books.
+* HTML documents.
+* Markdown documents.
+* PDF files.
+* Powerpoint presentations.
+* RTF documents.
+* Plane text documents.
+* Docx files.
+
 ## Changelog.
 
 ### 0.23.
