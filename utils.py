@@ -4,7 +4,7 @@ def plural(number, singular, multiple):
 	else:
 		return multiple
 
-def count_words(text):
+def count_words(content):
 	word_list = content.split(" ")
 	count = len(word_list)
 	del word_list
