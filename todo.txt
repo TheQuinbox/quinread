@@ -7,3 +7,5 @@ Add anotations
 Add CHM parsing.
 Add autoupdate.
 Add registration.
+Write docs.
+Add an issue reporter.
