@@ -19,7 +19,8 @@ class EpubDocument(BaseDocument):
 				continue
 			soup = BeautifulSoup(item.content, "lxml")
 			for child in soup.find_all(["p", "div", "blockquote", "h1", "h2", "h3", "h4", "h5", "h6"]):
-				result += child.text + "\n"
+				if child.text not in result:
+					result += child.text + "\n"
 		return result
 
 	def close(self):
