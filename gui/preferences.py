@@ -9,6 +9,7 @@ class PreferencesDialog(wx.Dialog):
 		self.load_previous = wx.CheckBox(self, -1, "&Load previously loaded document on startup")
 		self.main_box.Add(self.load_previous, 0, wx.ALL, 10)
 		self.load_previous.SetValue(self.app.config.load_previous)
+		self.load_previous.SetFocus()
 		self.ok = wx.Button(self.panel, wx.ID_OK, "&OK")
 		self.main_box.Add(self.ok, 0, wx.ALL, 10)
 		self.ok.Bind(wx.EVT_BUTTON, self.on_ok)
