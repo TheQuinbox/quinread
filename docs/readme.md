@@ -25,6 +25,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.25.
+
+* You're no longer focused on the OK button by default in the preferences dialog.
+
 ### 0.24.
 
 * With certain EPub books (such as those from ZLib.org), chapters would sometimes show up twice. This has now been fixed.
