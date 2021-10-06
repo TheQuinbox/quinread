@@ -8,3 +8,4 @@ Add CHM parsing.
 Add autoupdate.
 Add registration.
 Add an issue reporter.
+Display the currently opened document in the title bar.
