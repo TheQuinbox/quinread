@@ -6,7 +6,7 @@ import os
 class Application:
 	def __init__(self):
 		self.name = "Quinread"
-		self.version = "0.26"
+		self.version = "0.27"
 		self.running = False
 		self.config = None
 		self.load_config()
