@@ -102,7 +102,7 @@ class MainFrame(wx.Frame):
 		return text
 
 	def on_open(self, event=None):
-		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
+		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN | wx.FD_OVERWRITE_PROMPT)
 		if dialog.ShowModal() == wx.ID_OK:
 			old_path = self.path
 			self.path = dialog.GetPath()
