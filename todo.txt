@@ -6,6 +6,5 @@ Add bookmarks
 Add anotations
 Add CHM parsing.
 Add autoupdate.
-Add registration.
-Add an issue reporter.
+Add an issue reporter from right within the app.
 Display the currently opened document in the title bar.
