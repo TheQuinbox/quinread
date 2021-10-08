@@ -38,6 +38,9 @@ class MainFrame(wx.Frame):
 		self.tools_menu.AppendSeparator()
 		self.m_word_count = self.tools_menu.Append(wx.ID_ANY, "&Word Count (Control+W)")
 		self.Bind(wx.EVT_MENU, self.on_word_count, self.m_word_count)
+		self.tools_menu.AppendSeparator()
+		self.m_export_to_text = self.tools_menu.Append(wx.ID_ANY, "E&xport to text (Control+T)")
+		self.Bind(wx.EVT_MENU, self.on_export_to_text, self.m_export_to_text)
 		self.menu_bar.Append(self.tools_menu, "&Tools")
 		self.SetMenuBar(self.menu_bar)
 		self.reader_t = wx.StaticText(parent=self.panel, pos=(0, 90))
@@ -50,6 +53,7 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("G"), self.m_goto.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("W"), self.m_word_count.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("P"), self.m_preferences.GetId()))
+		self.accel.append((wx.ACCEL_CTRL, ord("T"), self.m_export_to_text.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
@@ -127,3 +131,15 @@ class MainFrame(wx.Frame):
 	def on_preferences(self, event=None):
 		dlg = preferences.PreferencesDialog(self.app)
 		dlg.Show()
+
+	def on_export_to_text(self, event=None):
+		dialog = wx.FileDialog(None, "Save as", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT, defaultFile="document.txt")
+		if self.reader.GetValue() == "" or self.path == "":
+			wx.MessageBox("No document is currently loaded.", "Error", wx.ICON_ERROR)
+			return
+		if dialog.ShowModal() == wx.ID_OK:
+			path = dialog.GetPath()
+			f = open(path, "w")
+			f.write(self.reader.GetValue())
+			f.close()
+		DIALOG.Destroy()
