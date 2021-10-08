@@ -25,6 +25,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.27.
+
+* Much better release ficility. This will make releasing much easier. Also adds back the readme to the last release.
+
 ### 0.26.
 
 * Added export to text!

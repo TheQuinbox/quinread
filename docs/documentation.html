@@ -6,6 +6,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Quinread.</title>
   <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -28,15 +159,16 @@
 <li><a href="#supported-file-types.">Supported file types.</a></li>
 <li><a href="#changelog.">Changelog.</a>
 <ul>
-<li><a href="#section">0.26.</a></li>
-<li><a href="#section-1">0.25.</a></li>
-<li><a href="#section-2">0.24.</a></li>
-<li><a href="#section-3">0.23.</a></li>
-<li><a href="#section-4">0.22.</a></li>
-<li><a href="#section-5">0.21.</a></li>
-<li><a href="#section-6">0.20.</a></li>
-<li><a href="#section-7">0.12.</a></li>
-<li><a href="#section-8">0.11.</a></li>
+<li><a href="#section">0.27.</a></li>
+<li><a href="#section-1">0.26.</a></li>
+<li><a href="#section-2">0.25.</a></li>
+<li><a href="#section-3">0.24.</a></li>
+<li><a href="#section-4">0.23.</a></li>
+<li><a href="#section-5">0.22.</a></li>
+<li><a href="#section-6">0.21.</a></li>
+<li><a href="#section-7">0.20.</a></li>
+<li><a href="#section-8">0.12.</a></li>
+<li><a href="#section-9">0.11.</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -62,33 +194,37 @@
 <li>Docx files.</li>
 </ul>
 <h1 id="changelog.">Changelog.</h1>
-<h2 id="section">0.26.</h2>
+<h2 id="section">0.27.</h2>
+<ul>
+<li>Much better release ficility. This will make releasing much easier. Also adds back the readme to the last release.</li>
+</ul>
+<h2 id="section-1">0.26.</h2>
 <ul>
 <li>Added export to text!</li>
 </ul>
-<h2 id="section-1">0.25.</h2>
+<h2 id="section-2">0.25.</h2>
 <ul>
 <li>You’re no longer focused on the OK button by default in the preferences dialog.</li>
 </ul>
-<h2 id="section-2">0.24.</h2>
+<h2 id="section-3">0.24.</h2>
 <ul>
 <li>With certain EPub books (such as those from ZLib.org), chapters would sometimes show up twice. This has now been fixed.</li>
 </ul>
-<h2 id="section-3">0.23.</h2>
+<h2 id="section-4">0.23.</h2>
 <ul>
 <li>Added a readme!</li>
 <li>Fixed a really weird bug where word count was reporting the incorrect number of words in a document.</li>
 </ul>
-<h2 id="section-4">0.22.</h2>
+<h2 id="section-5">0.22.</h2>
 <ul>
 <li>Fixed word count just… Not working.</li>
 <li>Added an options dialog. It currently only let’s you toggle if Quinread should load the previously opened document on startup.</li>
 </ul>
-<h2 id="section-5">0.21.</h2>
+<h2 id="section-6">0.21.</h2>
 <ul>
 <li>Quinread now loads your previously opened document on startup, and should set your position exactly where you were before. Needs tested.</li>
 </ul>
-<h2 id="section-6">0.20.</h2>
+<h2 id="section-7">0.20.</h2>
 <ul>
 <li>Added PPTX support.</li>
 <li>Moved a lot of the misc menu items into a new menu, called tools.</li>
@@ -100,11 +236,11 @@
 <li>Added PDF reading.</li>
 <li>Your previously loaded documenst now save, and save exactly where you were at within them!</li>
 </ul>
-<h2 id="section-7">0.12.</h2>
+<h2 id="section-8">0.12.</h2>
 <ul>
 <li>Added goto line.</li>
 </ul>
-<h2 id="section-8">0.11.</h2>
+<h2 id="section-9">0.11.</h2>
 <ul>
 <li>It’s now possible to get the number of words in your opened document.</li>
 <li>You can now press keys such as control+O to open a document.</li>
