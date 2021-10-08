@@ -25,6 +25,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.26.
+
+* Added export to text!
+
 ### 0.25.
 
 * You're no longer focused on the OK button by default in the preferences dialog.
