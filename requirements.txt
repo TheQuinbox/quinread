@@ -9,3 +9,4 @@ html2text
 striprtf
 python-docx
 python-pptx
+git+https://github.com/TheQuinbox/repeating_timer
