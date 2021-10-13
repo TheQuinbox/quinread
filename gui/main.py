@@ -11,6 +11,7 @@ from documents.html import HtmlDocument
 from documents.rtf import RtfDocument
 import utils
 from documents.powerpoint import PptxDocument
+from documents.mobi import MobiDocument
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -93,6 +94,8 @@ class MainFrame(wx.Frame):
 			document = RtfDocument(path)
 		elif path.lower().endswith(".pptx"):
 			document = PptxDocument(path)
+		elif path.lower().endswith(".mobi"):
+			document = MobiDocument(path)
 		else:
 			wx.MessageBox(f"{self.app.name} doesn't currently support this type of file.", "Error", wx.ICON_ERROR)
 			return ""
