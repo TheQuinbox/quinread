@@ -25,6 +25,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.29.
+
+* In some cases, epub books would insert a ton of blank lines all over the place for no reason. This has been fixed.
+
 ### 0.28.
 
 * Fixed a really strange issue where open just flattly faile don some machines. Thanks Sam Taylor!
