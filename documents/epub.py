@@ -21,6 +21,7 @@ class EpubDocument(BaseDocument):
 			for child in soup.find_all(["p", "div", "blockquote", "h1", "h2", "h3", "h4", "h5", "h6"]):
 				if child.text not in result:
 					result += child.text + "\n"
+		result = result.replace("\n\n\n", "\n")
 		return result
 
 	def close(self):
