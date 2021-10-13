@@ -1,4 +1,3 @@
-Add mobi reading
 Try to make goto line respect word wrap.
 Add a find dialog.
 Add bookmarks
