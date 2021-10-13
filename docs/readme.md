@@ -17,6 +17,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * EPub books.
 * HTML documents.
 * Markdown documents.
+* Mobi ebooks.
 * PDF files.
 * Powerpoint presentations.
 * RTF documents.
