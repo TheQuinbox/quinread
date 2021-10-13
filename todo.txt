@@ -12,3 +12,4 @@ Add the ability to OCR images in PDF files. This would probably require an inter
 Add a recent documents menu
 Make both the save as and open dialogs show supported files.
 Make the export to text's default filename be the document's name + .txt.
+Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
