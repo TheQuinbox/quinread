@@ -43,6 +43,10 @@ class MainFrame(wx.Frame):
 		self.m_export_to_text = self.tools_menu.Append(wx.ID_ANY, "E&xport to text (Control+T)")
 		self.Bind(wx.EVT_MENU, self.on_export_to_text, self.m_export_to_text)
 		self.menu_bar.Append(self.tools_menu, "&Tools")
+		self.help_menu = wx.Menu()
+		self.m_about = self.help_menu.Append(wx.ID_ANY, "&About (F1)")
+		self.Bind(wx.EVT_MENU, self.on_about, self.m_about)
+		self.menu_bar.Append(self.help_menu, "&Help")
 		self.SetMenuBar(self.menu_bar)
 		self.reader_t = wx.StaticText(parent=self.panel, pos=(0, 90))
 		self.reader_t.SetLabel("&Text")
@@ -55,6 +59,7 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("W"), self.m_word_count.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("P"), self.m_preferences.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("T"), self.m_export_to_text.GetId()))
+		self.accel.append((wx.ACCEL_NORMAL, wx.WXK_F1, self.m_about.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
@@ -146,3 +151,6 @@ class MainFrame(wx.Frame):
 			f.write(self.reader.GetValue())
 			f.close()
 		DIALOG.Destroy()
+
+	def on_about(self, event=None):
+		wx.MessageBox(f"{self.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.name} source code is licensed under the mIT license.", "About")
