@@ -153,4 +153,4 @@ class MainFrame(wx.Frame):
 		DIALOG.Destroy()
 
 	def on_about(self, event=None):
-		wx.MessageBox(f"{self.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.name} source code is licensed under the mIT license.", "About")
+		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the mIT license.", "About")
