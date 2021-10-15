@@ -17,6 +17,7 @@ class MainFrame(wx.Frame):
 	def __init__(self, app):
 		self.app = app
 		self.accel = []
+		self.filename = ""
 		self.path = ""
 		self.timer = RepeatingTimer(1.0, self.on_timer)
 		wx.Frame.__init__(self, None, title=f"{self.app.name} V{self.app.version}", size=wx.DefaultSize)
@@ -63,15 +64,16 @@ class MainFrame(wx.Frame):
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
-		if self.app.config.last_loaded != "" and self.app.config.load_previous:
-			text = self.load_file(self.app.config.last_loaded)
+		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
+			text = self.load_file(self.app.config.last_loaded_path, self.app.config.last_loaded_filename)
 			if text == "":
 				pass
 			else:
 				self.reader.SetValue(text)
 				if self.path not in self.app.config.loaded_documents:
 					self.app.config.loaded_documents[self.path] = 0
-					self.app.config.last_loaded = self.path
+					self.app.config.last_loaded_path = self.path
+					self.app.config.last_loaded_filename = self.filename
 				self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 		self.timer.start()
 
@@ -80,7 +82,7 @@ class MainFrame(wx.Frame):
 		self.timer.stop()
 		sys.exit()
 
-	def load_file(self, path):
+	def load_file(self, path, filename):
 		if path.lower().endswith(".txt"):
 			document = TextDocument(path)
 		elif path.lower().endswith(".txt"):
@@ -107,20 +109,22 @@ class MainFrame(wx.Frame):
 		text = document.read()
 		document.close()
 		self.path = path
+		self.filename = filename
 		return text
 
 	def on_open(self, event=None):
 		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
 		if dialog.ShowModal() == wx.ID_OK:
-			old_path = self.path
 			self.path = dialog.GetPath()
-			text = self.load_file(self.path)
+			self.filename = dialog.GetFilename()
+			text = self.load_file(self.path, self.filename)
 			if text == "":
 				return
 			self.reader.SetValue(text)
 			if self.path not in self.app.config.loaded_documents:
 				self.app.config.loaded_documents[self.path] = 0
-			self.app.config.last_loaded = self.path
+			self.app.config.last_loaded_path = self.path
+			self.app.config.last_loaded_filename = self.filename
 			self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 
 	def on_goto(self, event=None):
