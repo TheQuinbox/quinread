@@ -32,6 +32,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * Quinread can now read mobi books.
 * Added a help menu, with an about dialog.
 * The currently opened document's name is now shown in the title bar (thanks Mason for the suggestion)!
+* When using export to text, the default filename is now the document's name + .txt.
 
 ### 0.28.
 
@@ -51,7 +52,7 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ### 0.24.
 
-* With certain EPub books (such as those from ZLib.org), chapters would sometimes show up twice. This has now been fixed.
+* With certain EPub books, chapters would sometimes show up twice. This has now been fixed.
 
 ### 0.23.
 
