@@ -147,7 +147,7 @@ class MainFrame(wx.Frame):
 		dlg.Show()
 
 	def on_export_to_text(self, event=None):
-		dialog = wx.FileDialog(None, "Save as", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT, defaultFile="document.txt")
+		dialog = wx.FileDialog(None, "Save as", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT, defaultFile=f"{self.filename}.txt")
 		if self.reader.GetValue() == "" or self.path == "":
 			wx.MessageBox("No document is currently loaded.", "Error", wx.ICON_ERROR)
 			return
