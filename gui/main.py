@@ -75,6 +75,7 @@ class MainFrame(wx.Frame):
 					self.app.config.last_loaded_path = self.path
 					self.app.config.last_loaded_filename = self.filename
 				self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
+				self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
 		self.timer.start()
 
 	def on_close(self, event=None):
@@ -110,6 +111,7 @@ class MainFrame(wx.Frame):
 		document.close()
 		self.path = path
 		self.filename = filename
+		self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
 		return text
 
 	def on_open(self, event=None):
