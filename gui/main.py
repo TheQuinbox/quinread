@@ -156,7 +156,7 @@ class MainFrame(wx.Frame):
 			f = open(path, "w")
 			f.write(self.reader.GetValue())
 			f.close()
-		DIALOG.Destroy()
+		dialog.Destroy()
 
 	def on_about(self, event=None):
 		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the mIT license.", "About")

@@ -33,6 +33,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * Added a help menu, with an about dialog.
 * The currently opened document's name is now shown in the title bar (thanks Mason for the suggestion)!
 * When using export to text, the default filename is now the document's name + .txt.
+* Fixed a small bug where sometimes the export to text dialog wouldn't close.
 
 ### 0.28.
 
