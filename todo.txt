@@ -9,5 +9,4 @@ Make it cross-platform (i.e. run on Mac). The only issue with this is pyxpdf doe
 Add the ability to OCR images in PDF files. This would probably require an internet connection if we want to use ocr.space, or just use built in Windows 10 OCR / macOS APIs.
 Add a recent documents menu
 Make both the save as and open dialogs show supported files.
-Make the export to text's default filename be the document's name + .txt.
 Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
