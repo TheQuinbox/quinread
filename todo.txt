@@ -13,3 +13,4 @@ Setup file associations. Not quite sure how to do this, just associate things li
 If you want to load azw3, in the mobi parser, you get an epub. Make it parse
 Add a progress dialog when loading books.
 Completely rewrite the HTML parsing, and say fuck bs4, it's so slow.
+Make you able to pass a filename to the app when running from the command line.

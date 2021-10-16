@@ -9,9 +9,7 @@ class MyHtmlParser(HTMLParser):
 
 	def handle_data(self, data):
 		text = data.strip()
-		if len(text) > 0:
-			text = re.sub("[ \t\r\n]+", " ", text)
-			self.__text.append(text)
+		self.__text.append(text)
 
 	def handle_starttag(self, tag, attrs):
 		if tag == "br":
