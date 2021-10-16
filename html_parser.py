@@ -19,8 +19,6 @@ class HtmlToText(HTMLParser):
 			self._buf.append("\n")
 
 	def handle_endtag(self, tag):
-		#if tag == "p":
-			#self._buf.append("\n")
 		if tag in ("script", "style", "title"):
 			self.hide_output = False
 
