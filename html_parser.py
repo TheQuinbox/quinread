@@ -1,7 +1,6 @@
 import sys
 from html.parser import HTMLParser
 import re
-from html import entities
 
 class MyHtmlParser(HTMLParser):
 	def __init__(self):
@@ -15,7 +14,11 @@ class MyHtmlParser(HTMLParser):
 			self.__text.append(text + " ")
 
 	def handle_starttag(self, tag, attrs):
-		if tag == "p" or tag == "div":
+		if tag == "br":
+			self.text.append("\n\n")
+
+	def handle_endtag(self, tag, attrs):
+		if tag == "p" or tag == "div" or tag == "h1" or tag == "h2" or tag == "h3" or tag == "h4" or tag == "h5" or tag == "h6" or tag == "blockquote":
 			self.__text.append("\n")
 		elif tag == "br":
 			self.__text.append("\n\n")
