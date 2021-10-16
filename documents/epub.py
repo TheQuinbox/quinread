@@ -1,6 +1,6 @@
 from .base import BaseDocument
 from ebooklib import epub, ITEM_DOCUMENT
-from bs4 import BeautifulSoup
+import html_parser
 
 class EpubDocument(BaseDocument):
 	def __init__(self, path):
@@ -17,11 +17,8 @@ class EpubDocument(BaseDocument):
 			item = self.document.get_item_with_id(id)
 			if item is None:
 				continue
-			soup = BeautifulSoup(item.content, "lxml")
-			for child in soup.find_all(["p", "div", "blockquote", "h1", "h2", "h3", "h4", "h5", "h6"]):
-				if child.text not in result:
-					result += child.text + "\n"
-		result = result.replace("\n\n\n", "\n")
+			result += item.content.decode()
+		result = html_parser.parse_html(result)
 		return result
 
 	def close(self):

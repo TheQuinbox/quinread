@@ -11,13 +11,13 @@ class MyHtmlParser(HTMLParser):
 		text = data.strip()
 		if len(text) > 0:
 			text = re.sub("[ \t\r\n]+", " ", text)
-			self.__text.append(text + " ")
+			self.__text.append(text)
 
 	def handle_starttag(self, tag, attrs):
 		if tag == "br":
 			self.text.append("\n\n")
 
-	def handle_endtag(self, tag, attrs):
+	def handle_endtag(self, tag):
 		if tag == "p" or tag == "div" or tag == "h1" or tag == "h2" or tag == "h3" or tag == "h4" or tag == "h5" or tag == "h6" or tag == "blockquote":
 			self.__text.append("\n")
 		elif tag == "br":
@@ -30,7 +30,7 @@ class MyHtmlParser(HTMLParser):
 	def text(self):
 		return "".join(self.__text).strip()
 
-def extract_text(html):
+def parse_html(html):
 	if html is None:
 		html = ""
 	parser = MyHtmlParser()
