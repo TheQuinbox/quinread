@@ -1,7 +1,7 @@
 from .base import BaseDocument
 import mobi
-import html2text
 import shutil
+import html_parser
 
 class MobiDocument(BaseDocument):
 	def __init__(self, path):
@@ -14,7 +14,7 @@ class MobiDocument(BaseDocument):
 		content=self.document.read()
 		self.document.close()
 		shutil.rmtree(dir)
-		final = html2text.html2text(content)
+		final = html_parser.html_to_text(content)
 		return final
 
 	def close(self):
