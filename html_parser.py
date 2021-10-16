@@ -45,7 +45,7 @@ def html_to_text(html):
 	parser = HtmlToText()
 	parser.feed(html)
 	parser.close()
-	return parser.get_text()
+	return re.sub(r"\n\s*\n", "\n\n", parser.get_text())
 
 def text_to_html(text):
 	def f(mo):

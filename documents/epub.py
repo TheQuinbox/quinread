@@ -1,7 +1,6 @@
 from .base import BaseDocument
 from ebooklib import epub, ITEM_DOCUMENT
 import html_parser
-import re
 
 class EpubDocument(BaseDocument):
 	def __init__(self, path):
@@ -20,7 +19,6 @@ class EpubDocument(BaseDocument):
 				continue
 			result += item.content.decode()
 		result = html_parser.html_to_text(result)
-		result = re.sub(r"\n\s*\n", "\n\n", result)
 		return result
 
 	def close(self):
