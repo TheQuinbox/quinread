@@ -34,6 +34,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * The currently opened document's name is now shown in the title bar (thanks Mason for the suggestion)!
 * When using export to text, the default filename is now the document's name + .txt.
 * Fixed a small bug where sometimes the export to text dialog wouldn't close.
+* Completely rewrote the HTML parsing, leading to much nicer and faster parsing of epub, mobi, html and markdown documents.
 
 ### 0.28.
 
