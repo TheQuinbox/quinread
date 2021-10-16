@@ -3,11 +3,10 @@ nuitka
 pyxpdf
 pyxpdf_Data
 ebooklib
-bs4
 markdown
-html2text
 striprtf
 python-docx
 python-pptx
 git+https://github.com/TheQuinbox/repeating_timer
 mobi
+html2text
