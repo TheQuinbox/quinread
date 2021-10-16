@@ -18,7 +18,7 @@ class EpubDocument(BaseDocument):
 			if item is None:
 				continue
 			result += item.content.decode()
-		result = html_parser.parse_html(result)
+		result = html_parser.html_to_text(result)
 		return result
 
 	def close(self):

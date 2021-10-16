@@ -1,37 +1,55 @@
-import sys
 from html.parser import HTMLParser
+from html.entities import name2codepoint
 import re
 
-class MyHtmlParser(HTMLParser):
+class HtmlToText(HTMLParser):
 	def __init__(self):
 		HTMLParser.__init__(self)
-		self.__text = []
-
-	def handle_data(self, data):
-		text = data.strip()
-		self.__text.append(text)
+		self._buf = []
+		self.hide_output = False
 
 	def handle_starttag(self, tag, attrs):
-		if tag == "br":
-			self.text.append("\n\n")
-
-	def handle_endtag(self, tag):
-		if tag == "p" or tag == "div" or tag == "h1" or tag == "h2" or tag == "h3" or tag == "h4" or tag == "h5" or tag == "h6" or tag == "blockquote":
-			self.__text.append("\n")
-		elif tag == "br":
-			self.__text.append("\n\n")
+		if tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote") and not self.hide_output:
+			self._buf.append("\n")
+		elif tag in ("script", "style"):
+			self.hide_output = True
 
 	def handle_startendtag(self, tag, attrs):
 		if tag == "br":
-			self.__text.append("\n\n")
+			self._buf.append("\n")
 
-	def text(self):
-		return "".join(self.__text).strip()
+	def handle_endtag(self, tag):
+		if tag == "p":
+			self._buf.append("\n")
+		elif tag in ("script", "style"):
+			self.hide_output = False
 
-def parse_html(html):
-	if html is None:
-		html = ""
-	parser = MyHtmlParser()
+	def handle_data(self, text):
+		if text and not self.hide_output:
+			self._buf.append(text)
+
+	def handle_entityref(self, name):
+		if name in name2codepoint and not self.hide_output:
+			c = unichr(name2codepoint[name])
+			self._buf.append(c)
+
+	def handle_charref(self, name):
+		if not self.hide_output:
+			n = int(name[1:], 16) if name.startswith("x") else int(name)
+			self._buf.append(unichr(n))
+
+	def get_text(self):
+		return re.sub(r" +", " ", "".join(self._buf))
+
+def html_to_text(html):
+	parser = HtmlToText()
 	parser.feed(html)
 	parser.close()
-	return parser.text()
+	return parser.get_text()
+
+def text_to_html(text):
+	def f(mo):
+		t = mo.group()
+		if len(t) == 1:
+			return {"&":"&amp;", """:"&#39;", """:"&quot;", "<":"&lt;", ">":"&gt;"}.get(t)
+	return f"<a href=\"{t}\">{t}</a>"
