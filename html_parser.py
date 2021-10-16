@@ -11,7 +11,7 @@ class HtmlToText(HTMLParser):
 	def handle_starttag(self, tag, attrs):
 		if tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote") and not self.hide_output:
 			self._buf.append("\n")
-		elif tag in ("script", "style"):
+		elif tag in ("script", "style", "title"):
 			self.hide_output = True
 
 	def handle_startendtag(self, tag, attrs):
@@ -21,7 +21,7 @@ class HtmlToText(HTMLParser):
 	def handle_endtag(self, tag):
 		if tag == "p":
 			self._buf.append("\n")
-		elif tag in ("script", "style"):
+		elif tag in ("script", "style", "title"):
 			self.hide_output = False
 
 	def handle_data(self, text):
