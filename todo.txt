@@ -10,3 +10,4 @@ Add the ability to OCR images in PDF files. This would probably require an inter
 Add a recent documents menu
 Make both the save as and open dialogs show supported files.
 Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
+If you want to load azw3, in the mobi parser, you get an epub. Make it parse
