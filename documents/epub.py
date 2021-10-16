@@ -10,7 +10,7 @@ class EpubDocument(BaseDocument):
 		self.document = epub.read_epub(self.path)
 		result = ""
 		try:
-			result += self.document.title
+			result += self.document.title + "\n"
 		except AttributeError:
 			pass
 		for id, _ in self.document.spine:
