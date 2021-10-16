@@ -15,10 +15,10 @@ class MyHtmlParser(HTMLParser):
 			self.__text.append(text + " ")
 
 	def handle_starttag(self, tag, attrs):
-		if tag == "p":
-			self.__text.append("\n\n")
-		elif tag == "br":
+		if tag == "p" or tag == "div":
 			self.__text.append("\n")
+		elif tag == "br":
+			self.__text.append("\n\n")
 
 	def handle_startendtag(self, tag, attrs):
 		if tag == "br":
