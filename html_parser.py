@@ -44,10 +44,3 @@ def html_to_text(html):
 	parser.feed(html)
 	parser.close()
 	return re.sub(r"\n\s*\n", "\n\n", parser.get_text())
-
-def text_to_html(text):
-	def f(mo):
-		t = mo.group()
-		if len(t) == 1:
-			return {"&":"&amp;", """:"&#39;", """:"&quot;", "<":"&lt;", ">":"&gt;"}.get(t)
-	return f"<a href=\"{t}\">{t}</a>"
