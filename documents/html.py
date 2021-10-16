@@ -1,7 +1,5 @@
 from .base import BaseDocument
-import html2text
-from bs4 import BeautifulSoup
-import markdown
+import html_parser
 
 class HtmlDocument(BaseDocument):
 	def __init__(self, path):
@@ -10,9 +8,7 @@ class HtmlDocument(BaseDocument):
 	def read(self):
 		self.document = open(self.path, "r", encoding="utf-8")
 		text = self.document.read()
-		text2 = html2text.html2text(text)
-		html = markdown.markdown(text2)
-		final = "".join(BeautifulSoup(html, features="lxml").findAll(text=True))
+		final = html_parser.html_to_text(text)
 		return final
 
 	def close(self):
