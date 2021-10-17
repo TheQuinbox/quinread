@@ -3,7 +3,6 @@ Add a find dialog.
 Add bookmarks
 Add anotations
 Add CHM parsing.
-Add autoupdate.
 Add an issue reporter from right within the app.
 Make it cross-platform (i.e. run on Mac). The only issue with this is pyxpdf doesn't seem to install on macOS 11.4, for some stupid reason. Filed an issue about this.
 Add the ability to OCR images in PDF files. This would probably require an internet connection if we want to use ocr.space, or just use built in Windows 10 OCR / macOS APIs.
