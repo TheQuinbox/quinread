@@ -7,7 +7,7 @@ import updater
 class Application:
 	def __init__(self):
 		self.name = "Quinread"
-		self.version = "0.30"
+		self.version = "0.40"
 		self.running = False
 		self.config = None
 		self.load_config()
