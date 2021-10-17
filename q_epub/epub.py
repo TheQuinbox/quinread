@@ -1,11 +1,11 @@
-# Todo: Actually parse the xml file. Probably just parse it into an LXML tree, find the right entry, and store the file to open somewhere.
-
 import zipfile
-from .exceptions import *
+from exceptions import *
+import utils
 
 class EpubBook:
 	def __init__(self, filename):
 		self.filename = filename
+		self.container = None
 		self.load()
 
 	def load(self):
@@ -15,3 +15,4 @@ class EpubBook:
 			raise EpubError("Bad Zip file provided.")
 		except zipfile.LargeZipFile:
 			raise EpubError("Large Zip file provided.")
+		self.container = utils.read_from_zipfile(self.zf, "META-INF/container.xml")
