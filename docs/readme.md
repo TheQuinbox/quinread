@@ -26,6 +26,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0/40.
+
+* Added an updater! It checks every time when the program is launched. You can also invoke it manually.
+
 ### 0.30.
 
 * In some cases, epub books would insert a ton of blank lines all over the place for no reason. This has been fixed.
