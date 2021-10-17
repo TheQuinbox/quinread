@@ -3,6 +3,7 @@ from gui import main
 import custom_tweak
 import os
 import updater
+import threading
 
 class Application:
 	def __init__(self):
@@ -13,7 +14,7 @@ class Application:
 		self.load_config()
 		self.wx = wx.App()
 		self.main_frame = main.MainFrame(self)
-		updater.update_check(self, True)
+		threading.Thread(target=updater.update_check, args=[self, True]).start()
 
 	def run(self):
 		self.running = True

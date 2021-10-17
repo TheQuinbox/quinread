@@ -13,6 +13,7 @@ import utils
 from documents.powerpoint import PptxDocument
 from documents.mobi import MobiDocument
 import updater
+import threading
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -166,4 +167,4 @@ class MainFrame(wx.Frame):
 		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the mIT license.", "About")
 
 	def on_update(self, event=None):
-		updater.update_check(self.app, False)
+		threading.Thread(target=updater.update_check, args=[self.app, False]).start()
