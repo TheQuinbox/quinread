@@ -64,6 +64,7 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("P"), self.m_preferences.GetId()))
 		self.accel.append((wx.ACCEL_CTRL, ord("T"), self.m_export_to_text.GetId()))
 		self.accel.append((wx.ACCEL_NORMAL, wx.WXK_F1, self.m_about.GetId()))
+		self.accel.append((wx.ACCEL_CTRL, ord("u"), self.m_update.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
 		self.panel.Layout()
