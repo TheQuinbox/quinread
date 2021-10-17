@@ -12,6 +12,7 @@ from documents.rtf import RtfDocument
 import utils
 from documents.powerpoint import PptxDocument
 from documents.mobi import MobiDocument
+import updater
 
 class MainFrame(wx.Frame):
 	def __init__(self, app):
@@ -47,6 +48,8 @@ class MainFrame(wx.Frame):
 		self.help_menu = wx.Menu()
 		self.m_about = self.help_menu.Append(wx.ID_ANY, "&About (F1)")
 		self.Bind(wx.EVT_MENU, self.on_about, self.m_about)
+		self.m_update = self.help_menu.Append(wx.ID_ANY, "Check for &updates (Control+u)")
+		self.Bind(wx.EVT_MENU, self.on_update, self.m_update)
 		self.menu_bar.Append(self.help_menu, "&Help")
 		self.SetMenuBar(self.menu_bar)
 		self.reader_t = wx.StaticText(parent=self.panel, pos=(0, 90))
@@ -160,3 +163,6 @@ class MainFrame(wx.Frame):
 
 	def on_about(self, event=None):
 		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the mIT license.", "About")
+
+	def on_update(self, event=None):
+		updater.update_check(self.app, False)
