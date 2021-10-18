@@ -169,7 +169,7 @@ class MainFrame(wx.Frame):
 		dialog.Destroy()
 
 	def on_about(self, event=None):
-		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the mIT license.", "About")
+		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the MIT license.", "About")
 
 	def on_update(self, event=None):
 		threading.Thread(target=updater.update_check, args=[self.app, False]).start()
