@@ -32,6 +32,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * If no book is opened, the edit field doesn't show. Thanks Mason!
 * Completely rewrote the PDF parsing.
 * Fixed a bug in the HTML parser where list items weren't respected a lot of the time.
+* Fixed a small typo in the about dialog.
 
 ### 0.30.
 
