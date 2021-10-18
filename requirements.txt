@@ -8,3 +8,4 @@ python-pptx
 git+https://github.com/TheQuinbox/repeating_timer
 mobi
 pymupdf
+requests
