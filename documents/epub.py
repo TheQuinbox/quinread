@@ -9,10 +9,6 @@ class EpubDocument(BaseDocument):
 	def read(self):
 		self.document = epub.read_epub(self.path)
 		result = ""
-		try:
-			result += self.document.title + "\n"
-		except AttributeError:
-			pass
 		for id, _ in self.document.spine:
 			item = self.document.get_item_with_id(id)
 			if item is None:
