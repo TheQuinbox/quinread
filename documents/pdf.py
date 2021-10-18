@@ -10,7 +10,7 @@ class PdfDocument(BaseDocument):
 		self.document = fitz.open(self.path)
 		for page in self.document:
 			text = page.get_text().encode("utf8")
-			final += text
+			final += text.decode()
 		return final
 
 	def close(self):
