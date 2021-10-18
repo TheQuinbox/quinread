@@ -68,6 +68,7 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("u"), self.m_update.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
+		self.document.Enable(False)
 		self.panel.Layout()
 		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded_path, self.app.config.last_loaded_filename)
@@ -81,6 +82,7 @@ class MainFrame(wx.Frame):
 					self.app.config.last_loaded_filename = self.filename
 				self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
 				self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
+				self.reader.Enable(True)
 		self.timer.start()
 
 	def on_close(self, event=None):
@@ -128,6 +130,8 @@ class MainFrame(wx.Frame):
 			if text == "":
 				return
 			self.reader.SetValue(text)
+			self.reader.Enable(True)
+			self.reader.SetFocus()
 			if self.path not in self.app.config.loaded_documents:
 				self.app.config.loaded_documents[self.path] = 0
 			self.app.config.last_loaded_path = self.path
