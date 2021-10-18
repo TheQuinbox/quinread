@@ -31,6 +31,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * Added an updater! It checks every time when the program is launched. You can also invoke it manually.
 * If no book is opened, the edit field doesn't show. Thanks Mason!
 * Completely rewrote the PDF parsing.
+* Fixed a bug in the HTML parser where list items weren't respected a lot of the time.
 
 ### 0.30.
 
