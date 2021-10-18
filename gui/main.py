@@ -68,7 +68,8 @@ class MainFrame(wx.Frame):
 		self.accel.append((wx.ACCEL_CTRL, ord("u"), self.m_update.GetId()))
 		self.accel_table = wx.AcceleratorTable(self.accel)
 		self.SetAcceleratorTable(self.accel_table)
-		self.document.Enable(False)
+		self.reader.Enable(False)
+		self.reader_t.Enable(False)
 		self.panel.Layout()
 		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded_path, self.app.config.last_loaded_filename)
