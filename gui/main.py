@@ -123,7 +123,7 @@ class MainFrame(wx.Frame):
 		return text
 
 	def on_open(self, event=None):
-		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN)
+		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
 		if dialog.ShowModal() == wx.ID_OK:
 			self.path = dialog.GetPath()
 			self.filename = dialog.GetFilename()
