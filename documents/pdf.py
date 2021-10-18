@@ -1,5 +1,6 @@
 from .base import BaseDocument
 import fitz
+import re
 
 class PdfDocument(BaseDocument):
 	def __init__(self, path):
@@ -11,7 +12,7 @@ class PdfDocument(BaseDocument):
 		for page in self.document:
 			text = page.get_text().encode("utf8")
 			final += text.decode()
-		return final
+		return re.sub(r"\n\s*\n", "\n\n", final)
 
 	def close(self):
 		super().close()
