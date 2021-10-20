@@ -11,3 +11,4 @@ Make both the save as and open dialogs show supported files.
 Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
 Add a progress dialog when loading books.
 Make you able to pass a filename to the app when running from the command line. To do this, make it take a path, and use gui.main.MainFrame.on_open.
+Add BRF and BRL support.
