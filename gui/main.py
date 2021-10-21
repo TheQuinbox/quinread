@@ -92,6 +92,9 @@ class MainFrame(wx.Frame):
 		sys.exit()
 
 	def load_file(self, path):
+		if not os.path.isfile(path):
+			wx.MessageBox("That file doesn't exist", "Error", wx.ICON_ERROR)
+			return ""
 		if path.lower().endswith(".txt"):
 			document = TextDocument(path)
 		elif path.lower().endswith(".txt"):
