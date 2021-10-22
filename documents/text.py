@@ -5,7 +5,7 @@ class TextDocument(BaseDocument):
 		self.path = path
 
 	def read(self):
-		self.document = open(self.path, "r")
+		self.document = open(self.path, "r", encoding="utf-8")
 		text = self.document.read()
 		return text
 
