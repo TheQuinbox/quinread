@@ -34,6 +34,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * Fixed a bug in the HTML parser where list items weren't respected a lot of the time.
 * Fixed a small typo in the about dialog.
 * You can no longer open files that don't exist by typing in an invalid path.
+* Changed the method for parsing epub books.
 
 ### 0.30.
 
