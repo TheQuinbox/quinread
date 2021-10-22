@@ -1,6 +1,5 @@
 wxpython
 nuitka
-ebooklib
 markdown
 striprtf
 python-docx
