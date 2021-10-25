@@ -35,6 +35,7 @@ Quinread supports quite a number of common file types. They are all listed below
 * Fixed a small typo in the about dialog.
 * You can no longer open files that don't exist by typing in an invalid path.
 * Fixed a small error if you tried to open text files containing certain characters.
+* You can now pass a path to the app when running from the command line to open it.
 
 ### 0.30.
 
