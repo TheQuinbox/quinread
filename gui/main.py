@@ -17,8 +17,9 @@ import threading
 import os
 
 class MainFrame(wx.Frame):
-	def __init__(self, app):
+	def __init__(self, app, args):
 		self.app = app
+		self.args = args
 		self.accel = []
 		self.filename = ""
 		self.path = ""
@@ -74,6 +75,18 @@ class MainFrame(wx.Frame):
 		self.panel.Layout()
 		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded_path)
+			if text == "":
+				pass
+			else:
+				self.reader.SetValue(text)
+				if self.path not in self.app.config.loaded_documents:
+					self.app.config.loaded_documents[self.path] = 0
+					self.app.config.last_loaded_path = self.path
+				self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
+				self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
+				self.reader.Enable(True)
+		if self.args != [] and len(self.args) == 2:
+			text = self.load_file(self.args[1])
 			if text == "":
 				pass
 			else:
