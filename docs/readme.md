@@ -26,6 +26,10 @@ Quinread supports quite a number of common file types. They are all listed below
 
 ## Changelog.
 
+### 0.41.
+
+* We now strip some trailing characters from the ends of certain HTML documents.
+
 ### 0.40.
 
 * Added an updater! It checks every time when the program is launched. You can also invoke it manually.

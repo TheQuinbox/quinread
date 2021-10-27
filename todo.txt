@@ -11,4 +11,3 @@ Make both the save as and open dialogs show supported files.
 Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
 Add a progress dialog when loading books.
 Add BRF and BRL support.
-See about calling strip() in the html parser.
