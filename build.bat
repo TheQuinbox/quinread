@@ -1,3 +1,3 @@
 @echo off
-nuitka --windows-company-name=Accessware --windows-product-name=Quinread --windows-file-version=0.40 --windows-product-version=0.40 --windows-file-description=Quinread --standalone --python-flag=no_site --windows-disable-console --remove-output quinread.pyw
+nuitka --windows-company-name=Accessware --windows-product-name=Quinread --windows-file-version=0.41 --windows-product-version=0.41 --windows-file-description=Quinread --standalone --python-flag=no_site --windows-disable-console --remove-output quinread.pyw
 pause > nul
