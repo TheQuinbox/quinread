@@ -9,7 +9,9 @@ class HtmlToText(HTMLParser):
 		self.hide_output = False
 
 	def handle_starttag(self, tag, attrs):
-		if tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li") and not self.hide_output:
+		if tag in ("b", "i", "span"):
+			self._buf.append("")
+		elif tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li") and not self.hide_output:
 			self._buf.append("\n")
 		elif tag in ("script", "style", "title"):
 			self.hide_output = True
