@@ -11,3 +11,5 @@ Make both the save as and open dialogs show supported files.
 Setup file associations. Not quite sure how to do this, just associate things like epub and PDF, or all accept txt? Not sure.
 Add a progress dialog when loading books.
 Add BRF and BRL support.
+Make spans not insert random newlines all over the place in some cases.
+Possibly switch to pyinstaller or py2exe in order to cut down on executable size, assuming this doesn't impact performance too much.
