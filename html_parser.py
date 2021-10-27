@@ -10,7 +10,7 @@ class HtmlToText(HTMLParser):
 
 	def handle_starttag(self, tag, attrs):
 		if tag in ("b", "i", "span"):
-			self._buf.append("")
+			return
 		elif tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li") and not self.hide_output:
 			self._buf.append("\n")
 		elif tag in ("script", "style", "title"):
