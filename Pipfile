@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+striprtf = "*"
+python-docx = "*"
+python-pptx = "*"
+repeating-timer = {git = "https://github.com/TheQuinbox/repeating_timer"}
+mobi = "*"
+requests = "*"
+wxPython = "*"
+Nuitka = "*"
+EbookLib = "*"
+Markdown = "*"
+PyMuPDF = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
