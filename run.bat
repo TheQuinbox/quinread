@@ -1,3 +1,3 @@
 @echo off
-python quinread.pyw
+pipenv run pythonw quinread.pyw
 pause > nul
