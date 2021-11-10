@@ -75,8 +75,7 @@ class MainFrame(wx.Frame):
 		self.panel.Layout()
 		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded_path)
-			if text == "":
-				pass
+			if text == "": pass
 			else:
 				self.reader.SetValue(text)
 				if self.path not in self.app.config.loaded_documents:
@@ -87,8 +86,7 @@ class MainFrame(wx.Frame):
 				self.reader.Enable(True)
 		if self.args != [] and len(self.args) == 2:
 			text = self.load_file(self.args[1])
-			if text == "":
-				pass
+			if text == "": pass
 			else:
 				self.reader.SetValue(text)
 				if self.path not in self.app.config.loaded_documents:
@@ -98,12 +96,12 @@ class MainFrame(wx.Frame):
 				self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
 				self.reader.Enable(True)
 		self.timer.start()
-
+	
 	def on_close(self, event=None):
 		self.Destroy()
 		self.timer.stop()
 		sys.exit()
-
+	
 	def load_file(self, path):
 		if not os.path.isfile(path):
 			wx.MessageBox("That file doesn't exist", "Error", wx.ICON_ERROR)
@@ -137,14 +135,13 @@ class MainFrame(wx.Frame):
 		self.filename = os.path.basename(self.path)
 		self.SetTitle(f"{self.filename} - {self.app.name} V{self.app.version}")
 		return text
-
+	
 	def on_open(self, event=None):
 		dialog = wx.FileDialog(None, "Open", style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
 		if dialog.ShowModal() == wx.ID_OK:
 			self.path = dialog.GetPath()
 			text = self.load_file(self.path)
-			if text == "":
-				return
+			if text == "": return
 			self.reader.SetValue(text)
 			self.reader.Enable(True)
 			self.reader.SetFocus()
@@ -152,24 +149,24 @@ class MainFrame(wx.Frame):
 				self.app.config.loaded_documents[self.path] = 0
 			self.app.config.last_loaded_path = self.path
 			self.reader.SetInsertionPoint(self.app.config.loaded_documents[self.path])
-
+	
 	def on_goto(self, event=None):
 		dlg = goto.GotoDialog(self)
 		dlg.Show()
-
+	
 	def on_timer(self):	
 		if self.path != "":
 			self.app.config.loaded_documents[self.path] = self.reader.GetInsertionPoint()
-
+	
 	def on_word_count(self, event=None):
 		content = self.reader.GetValue()
 		count = utils.count_words(content)
 		wx.MessageBox(f"This document contains {count} {utils.plural(count, 'word', 'words')}", "Word count")
-
+	
 	def on_preferences(self, event=None):
 		dlg = preferences.PreferencesDialog(self.app)
 		dlg.Show()
-
+	
 	def on_export_to_text(self, event=None):
 		dialog = wx.FileDialog(None, "Save as", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT, defaultFile=f"{self.filename}.txt")
 		if self.reader.GetValue() == "" or self.path == "":
@@ -181,9 +178,9 @@ class MainFrame(wx.Frame):
 			f.write(self.reader.GetValue())
 			f.close()
 		dialog.Destroy()
-
+	
 	def on_about(self, event=None):
 		wx.MessageBox(f"{self.app.name} is copyright (c) 2021 by Quin Marilyn and other contributors. The {self.app.name} source code is licensed under the MIT license.", "About")
-
+	
 	def on_update(self, event=None):
 		threading.Thread(target=updater.update_check, args=[self.app, False]).start()

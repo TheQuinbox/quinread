@@ -1,5 +1,5 @@
 import wx
-
+	
 class PreferencesDialog(wx.Dialog):
 	def __init__(self, app):
 		self.app = app
@@ -19,10 +19,10 @@ class PreferencesDialog(wx.Dialog):
 		self.cancel.Bind(wx.EVT_BUTTON, self.on_cancel)
 		self.Bind(wx.EVT_CLOSE, self.on_cancel)
 		self.panel.Layout()
-
+	
 	def on_ok(self, event=None):
 		self.app.config.load_previous = self.load_previous.GetValue()
 		self.Destroy()
-
+	
 	def on_cancel(self, event=None):
 		self.Destroy()

@@ -20,13 +20,13 @@ class GotoDialog(wx.Dialog):
 		self.close.Bind(wx.EVT_BUTTON, self.on_close)
 		self.Bind(wx.EVT_CLOSE, self.on_close)
 		self.panel.Layout()
-
+	
 	def get_current_line(self):
 		return len(self.frame.reader.GetRange(0, self.frame.reader.GetInsertionPoint()).split("\n"))
-
+	
 	def on_close(self, event=None):
 		self.Destroy()
-
+	
 	def on_go(self, event=None):
 		try:
 			line = int(self.text_field.GetValue())

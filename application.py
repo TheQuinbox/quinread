@@ -16,12 +16,12 @@ class Application:
 		self.wx = wx.App()
 		self.main_frame = main.MainFrame(self, sys.argv)
 		threading.Thread(target=updater.update_check, args=[self, True]).start()
-
+	
 	def run(self):
 		self.running = True
 		self.main_frame.Show()
 		self.wx.MainLoop()
-
+	
 	def load_config(self):
 		self.config = custom_tweak.Config(name=self.name, autosave=True, custom_path=os.getcwd())
 		self.config.loaded_documents = self.config.get("loaded_documents", {})
