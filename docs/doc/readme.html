@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <title>Quinread.</title>
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+    <h1 class="title">Quinread.</h1>
+    <nav id="TOC"><ul>
+<li><a href="#introduction">0.1 Introduction.</a><ul></ul></li>
+<li><a href="#supported-file-types">0.2 Supported file types.</a><ul></ul></li>
+<li><a href="#changelog">0.3 Changelog.</a><ul>
+<li><a href="#041">0.3.1 0.41.</a><ul></ul></li>
+<li><a href="#040">0.3.2 0.40.</a><ul></ul></li>
+<li><a href="#030">0.3.3 0.30.</a><ul></ul></li>
+<li><a href="#028">0.3.4 0.28.</a><ul></ul></li>
+<li><a href="#027">0.3.5 0.27.</a><ul></ul></li>
+<li><a href="#026">0.3.6 0.26.</a><ul></ul></li>
+<li><a href="#025">0.3.7 0.25.</a><ul></ul></li>
+<li><a href="#024">0.3.8 0.24.</a><ul></ul></li>
+<li><a href="#023">0.3.9 0.23.</a><ul></ul></li>
+<li><a href="#022">0.3.10 0.22.</a><ul></ul></li>
+<li><a href="#021">0.3.11 0.21.</a><ul></ul></li>
+<li><a href="#020">0.3.12 0.20.</a><ul></ul></li>
+<li><a href="#012">0.3.13 0.12.</a><ul></ul></li>
+<li><a href="#011">0.3.14 0.11.</a><ul></ul></li></ul></li></ul></nav><h2 id="introduction" class="section-header"><a href="#introduction">0.1 Introduction.</a></h2>
+<p>Quinread is a fully accessible and powerful document reader, supporting many different file formats, and with many different features. Some highlights include:</p>
+<ul>
+<li>Automatically saves your position for every document you open.</li>
+<li>Allows you to load the previously opened document on startup, and be exactly where you left off.</li>
+<li>Let’s you jump directly between lines, no matter how far apart they are.</li>
+<li>Supports many common file types, such as EPub books, RTF documents, and PDF documents.</li>
+<li>And much more!</li>
+</ul>
+<h2 id="supported-file-types" class="section-header"><a href="#supported-file-types">0.2 Supported file types.</a></h2>
+<p>Quinread supports quite a number of common file types. They are all listed below.</p>
+<ul>
+<li>EPub books.</li>
+<li>HTML documents.</li>
+<li>Markdown documents.</li>
+<li>Mobi ebooks (including Mobi6 and AWZ3 files).</li>
+<li>PDF files.</li>
+<li>Powerpoint presentations.</li>
+<li>RTF documents.</li>
+<li>Plane text documents.</li>
+<li>Docx files.</li>
+</ul>
+<h2 id="changelog" class="section-header"><a href="#changelog">0.3 Changelog.</a></h2><h3 id="041" class="section-header"><a href="#041">0.3.1 0.41.</a></h3>
+<ul>
+<li>We now strip some trailing characters from the ends of certain HTML documents.</li>
+</ul>
+<h3 id="040" class="section-header"><a href="#040">0.3.2 0.40.</a></h3>
+<ul>
+<li>Added an updater! It checks every time when the program is launched. You can also invoke it manually.</li>
+<li>If no book is opened, the edit field doesn’t show. Thanks Mason!</li>
+<li>Completely rewrote the PDF parsing.</li>
+<li>Fixed a bug in the HTML parser where list items weren’t respected a lot of the time.</li>
+<li>Fixed a small typo in the about dialog.</li>
+<li>You can no longer open files that don’t exist by typing in an invalid path.</li>
+<li>Fixed a small error if you tried to open text files containing certain characters.</li>
+<li>You can now pass a path to the app when running from the command line to open it.</li>
+<li>When parsing mobi, HTML, Markdown or EPUB, paragraphs are no longer sepperated with two blannk lines, unless explicitly told to do so.</li>
+</ul>
+<h3 id="030" class="section-header"><a href="#030">0.3.3 0.30.</a></h3>
+<ul>
+<li>In some cases, epub books would insert a ton of blank lines all over the place for no reason. This has been fixed.</li>
+<li>Quinread can now read mobi books.</li>
+<li>Added a help menu, with an about dialog.</li>
+<li>The currently opened document’s name is now shown in the title bar (thanks Mason for the suggestion)!</li>
+<li>When using export to text, the default filename is now the document’s name + .txt.</li>
+<li>Fixed a small bug where sometimes the export to text dialog wouldn’t close.</li>
+<li>Completely rewrote the HTML parsing, leading to much nicer and faster parsing of epub, mobi, html and markdown documents.</li>
+</ul>
+<h3 id="028" class="section-header"><a href="#028">0.3.4 0.28.</a></h3>
+<ul>
+<li>Fixed a really strange issue where open just flattly faile don some machines. Thanks Sam Taylor!</li>
+</ul>
+<h3 id="027" class="section-header"><a href="#027">0.3.5 0.27.</a></h3>
+<ul>
+<li>Much better release ficility. This will make releasing much easier. Also adds back the readme to the last release.</li>
+</ul>
+<h3 id="026" class="section-header"><a href="#026">0.3.6 0.26.</a></h3>
+<ul>
+<li>Added export to text!</li>
+</ul>
+<h3 id="025" class="section-header"><a href="#025">0.3.7 0.25.</a></h3>
+<ul>
+<li>You’re no longer focused on the OK button by default in the preferences dialog.</li>
+</ul>
+<h3 id="024" class="section-header"><a href="#024">0.3.8 0.24.</a></h3>
+<ul>
+<li>With certain EPub books, chapters would sometimes show up twice. This has now been fixed.</li>
+</ul>
+<h3 id="023" class="section-header"><a href="#023">0.3.9 0.23.</a></h3>
+<ul>
+<li>Added a readme!</li>
+<li>Fixed a really weird bug where word count was reporting the incorrect number of words in a document.</li>
+</ul>
+<h3 id="022" class="section-header"><a href="#022">0.3.10 0.22.</a></h3>
+<ul>
+<li>Fixed word count just… Not working.</li>
+<li>Added an options dialog. It currently only let’s you toggle if Quinread should load the previously opened document on startup.</li>
+</ul>
+<h3 id="021" class="section-header"><a href="#021">0.3.11 0.21.</a></h3>
+<ul>
+<li>Quinread now loads your previously opened document on startup, and should set your position exactly where you were before. Needs tested.</li>
+</ul>
+<h3 id="020" class="section-header"><a href="#020">0.3.12 0.20.</a></h3>
+<ul>
+<li>Added PPTX support.</li>
+<li>Moved a lot of the misc menu items into a new menu, called tools.</li>
+<li>Added RTF reading.</li>
+<li>Added HTML reading.</li>
+<li>Added Markdown reading.</li>
+<li>Added EPub reading.</li>
+<li>Added DOCX reading.</li>
+<li>Added PDF reading.</li>
+<li>Your previously loaded documenst now save, and save exactly where you were at within them!</li>
+</ul>
+<h3 id="012" class="section-header"><a href="#012">0.3.13 0.12.</a></h3>
+<ul>
+<li>Added goto line.</li>
+</ul>
+<h3 id="011" class="section-header"><a href="#011">0.3.14 0.11.</a></h3>
+<ul>
+<li>It’s now possible to get the number of words in your opened document.</li>
+<li>You can now press keys  such as control+O to open a document.</li>
+</ul>
+
+    
+</body>
+</html>

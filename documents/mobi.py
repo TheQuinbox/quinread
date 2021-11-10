@@ -8,7 +8,7 @@ from .pdf import PdfDocument
 class MobiDocument(BaseDocument):
 	def __init__(self, path):
 		self.path = path
-
+	
 	def read(self):
 		final = ""
 		dir, file = mobi.extract(self.path)
@@ -23,6 +23,6 @@ class MobiDocument(BaseDocument):
 		del parser
 		shutil.rmtree(dir)
 		return final
-
+	
 	def close(self):
 		super().close()
