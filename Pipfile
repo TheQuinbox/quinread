@@ -11,7 +11,7 @@ repeating-timer = {git = "https://github.com/TheQuinbox/repeating_timer"}
 mobi = "*"
 requests = "*"
 wxPython = "*"
-Nuitka = "*"
+PyInstaller = "*"
 EbookLib = "*"
 Markdown = "*"
 PyMuPDF = "*"

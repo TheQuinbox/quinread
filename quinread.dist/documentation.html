@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quinread.</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Quinread.</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction.">Introduction.</a></li>
+<li><a href="#supported-file-types.">Supported file types.</a></li>
+<li><a href="#changelog.">Changelog.</a>
+<ul>
+<li><a href="#section">0.40.</a></li>
+<li><a href="#section-1">0.30.</a></li>
+<li><a href="#section-2">0.28.</a></li>
+<li><a href="#section-3">0.27.</a></li>
+<li><a href="#section-4">0.26.</a></li>
+<li><a href="#section-5">0.25.</a></li>
+<li><a href="#section-6">0.24.</a></li>
+<li><a href="#section-7">0.23.</a></li>
+<li><a href="#section-8">0.22.</a></li>
+<li><a href="#section-9">0.21.</a></li>
+<li><a href="#section-10">0.20.</a></li>
+<li><a href="#section-11">0.12.</a></li>
+<li><a href="#section-12">0.11.</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction.">Introduction.</h1>
+<p>Quinread is a fully accessible and powerful document reader, supporting many different file formats, and with many different features. Some highlights include:</p>
+<ul>
+<li>Automatically saves your position for every document you open.</li>
+<li>Allows you to load the previously opened document on startup, and be exactly where you left off.</li>
+<li>Let’s you jump directly between lines, no matter how far apart they are.</li>
+<li>Supports many common file types, such as EPub books, RTF documents, and PDF documents.</li>
+<li>And much more!</li>
+</ul>
+<h1 id="supported-file-types.">Supported file types.</h1>
+<p>Quinread supports quite a number of common file types. They are all listed below.</p>
+<ul>
+<li>EPub books.</li>
+<li>HTML documents.</li>
+<li>Markdown documents.</li>
+<li>Mobi ebooks (including Mobi6 and AWZ3 files).</li>
+<li>PDF files.</li>
+<li>Powerpoint presentations.</li>
+<li>RTF documents.</li>
+<li>Plane text documents.</li>
+<li>Docx files.</li>
+</ul>
+<h1 id="changelog.">Changelog.</h1>
+<h2 id="section">0.40.</h2>
+<ul>
+<li>Added an updater! It checks every time when the program is launched. You can also invoke it manually.</li>
+<li>If no book is opened, the edit field doesn’t show. Thanks Mason!</li>
+<li>Completely rewrote the PDF parsing.</li>
+<li>Fixed a bug in the HTML parser where list items weren’t respected a lot of the time.</li>
+<li>Fixed a small typo in the about dialog.</li>
+<li>You can no longer open files that don’t exist by typing in an invalid path.</li>
+<li>Fixed a small error if you tried to open text files containing certain characters.</li>
+<li>You can now pass a path to the app when running from the command line to open it.</li>
+<li>When parsing mobi, HTML, Markdown or EPUB, paragraphs are no longer sepperated with two blannk lines, unless explicitly told to do so.</li>
+</ul>
+<h2 id="section-1">0.30.</h2>
+<ul>
+<li>In some cases, epub books would insert a ton of blank lines all over the place for no reason. This has been fixed.</li>
+<li>Quinread can now read mobi books.</li>
+<li>Added a help menu, with an about dialog.</li>
+<li>The currently opened document’s name is now shown in the title bar (thanks Mason for the suggestion)!</li>
+<li>When using export to text, the default filename is now the document’s name + .txt.</li>
+<li>Fixed a small bug where sometimes the export to text dialog wouldn’t close.</li>
+<li>Completely rewrote the HTML parsing, leading to much nicer and faster parsing of epub, mobi, html and markdown documents.</li>
+</ul>
+<h2 id="section-2">0.28.</h2>
+<ul>
+<li>Fixed a really strange issue where open just flattly faile don some machines. Thanks Sam Taylor!</li>
+</ul>
+<h2 id="section-3">0.27.</h2>
+<ul>
+<li>Much better release ficility. This will make releasing much easier. Also adds back the readme to the last release.</li>
+</ul>
+<h2 id="section-4">0.26.</h2>
+<ul>
+<li>Added export to text!</li>
+</ul>
+<h2 id="section-5">0.25.</h2>
+<ul>
+<li>You’re no longer focused on the OK button by default in the preferences dialog.</li>
+</ul>
+<h2 id="section-6">0.24.</h2>
+<ul>
+<li>With certain EPub books, chapters would sometimes show up twice. This has now been fixed.</li>
+</ul>
+<h2 id="section-7">0.23.</h2>
+<ul>
+<li>Added a readme!</li>
+<li>Fixed a really weird bug where word count was reporting the incorrect number of words in a document.</li>
+</ul>
+<h2 id="section-8">0.22.</h2>
+<ul>
+<li>Fixed word count just… Not working.</li>
+<li>Added an options dialog. It currently only let’s you toggle if Quinread should load the previously opened document on startup.</li>
+</ul>
+<h2 id="section-9">0.21.</h2>
+<ul>
+<li>Quinread now loads your previously opened document on startup, and should set your position exactly where you were before. Needs tested.</li>
+</ul>
+<h2 id="section-10">0.20.</h2>
+<ul>
+<li>Added PPTX support.</li>
+<li>Moved a lot of the misc menu items into a new menu, called tools.</li>
+<li>Added RTF reading.</li>
+<li>Added HTML reading.</li>
+<li>Added Markdown reading.</li>
+<li>Added EPub reading.</li>
+<li>Added DOCX reading.</li>
+<li>Added PDF reading.</li>
+<li>Your previously loaded documenst now save, and save exactly where you were at within them!</li>
+</ul>
+<h2 id="section-11">0.12.</h2>
+<ul>
+<li>Added goto line.</li>
+</ul>
+<h2 id="section-12">0.11.</h2>
+<ul>
+<li>It’s now possible to get the number of words in your opened document.</li>
+<li>You can now press keys such as control+O to open a document.</li>
+</ul>
+</body>
+</html>
