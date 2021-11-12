@@ -7,7 +7,7 @@ class HtmlToText(HTMLParser):
 		HTMLParser.__init__(self)
 		self._buf = []
 		self.hide_output = False
-
+	
 	def handle_starttag(self, tag, attrs):
 		if tag in ("b", "i"):
 			return
@@ -15,29 +15,29 @@ class HtmlToText(HTMLParser):
 			self._buf.append("\n")
 		elif tag in ("script", "style", "title"):
 			self.hide_output = True
-
+	
 	def handle_startendtag(self, tag, attrs):
 		if tag == "br":
 			self._buf.append("\n")
-
+	
 	def handle_endtag(self, tag):
 		if tag in ("script", "style", "title"):
 			self.hide_output = False
-
+	
 	def handle_data(self, text):
 		if text and not self.hide_output:
 			self._buf.append(text)
-
+	
 	def handle_entityref(self, name):
 		if name in name2codepoint and not self.hide_output:
 			c = unichr(name2codepoint[name])
 			self._buf.append(c)
-
+	
 	def handle_charref(self, name):
 		if not self.hide_output:
 			n = int(name[1:], 16) if name.startswith("x") else int(name)
 			self._buf.append(unichr(n))
-
+	
 	def get_text(self):
 		return re.sub(r" +", " ", "".join(self._buf))
 

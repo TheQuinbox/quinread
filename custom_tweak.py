@@ -12,15 +12,14 @@ class Config(collections.MutableMapping):
 	_site_config_home = "/etc"
 	_user_config_home = os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config"))
 	_logger = logging.getLogger(__name__)
-
+	
 	def __init__(self, name=os.path.basename(__file__), save_on_exit=True, autosave=False, use_yaml=False, allow_includes=False, _parent=None, _data=None,custom_path=None):
 		self._name = name
 		self._autosave = autosave
 		self._use_yaml = use_yaml
 		self._allow_includes = allow_includes
 		self._custom_path = custom_path
-		if save_on_exit and _parent is None:
-			atexit.register(self.save)
+		if save_on_exit and _parent is None: atexit.register(self.save)
 		self._parent = _parent
 		if self._parent is None:
 			self._data = {}
@@ -32,23 +31,20 @@ class Config(collections.MutableMapping):
 					if isinstance(e, ImportError):
 						raise
 					self._logger.debug(e)
-		else:
-			self._data = _data
-
+		else: self._data = _data
+	
 	@property
 	def config_files(self):
-		if not self._custom_path == None:
-			return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
+		if not self._custom_path == None: return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
 		config_files = [os.path.join(self._site_config_home, self._name, "config.yml" if self._use_yaml else "config.json"), os.path.join(self._user_config_home, self._name, "config.yml" if self._use_yaml else "config.json")]
 		config_var = self._name.upper() + "_CONFIG_FILE"
-		if config_var in os.environ:
-			config_files.extend(os.environ[config_var].split(":"))
+		if config_var in os.environ: config_files.extend(os.environ[config_var].split(":"))
 		return config_files
-
+	
 	@property
 	def user_config_dir(self):
 		return os.path.join(self._user_config_home, self._name)
-
+	
 	def update(self, *args, **kwargs):
 		updates = collections.OrderedDict()
 		updates.update(*args, **kwargs)
@@ -74,7 +70,7 @@ class Config(collections.MutableMapping):
 					self._logger.debug(e)
 			else:
 				self[k] = updates[k]
-
+	
 	def _parse(self, stream):
 		if self._use_yaml:
 			import yaml
@@ -86,7 +82,7 @@ class Config(collections.MutableMapping):
 			return yaml.load(stream, Loader=ConfigLoader) or {}
 		else:
 			return json.load(stream, object_hook=self._as_config)
-
+	
 	def _load(self, stream):
 		contents = self._parse(stream)
 		if self._allow_includes and "include" in contents:
@@ -101,7 +97,7 @@ class Config(collections.MutableMapping):
 			del contents["include"]
 		self.update(contents)
 		self._logger.info("Loaded configuration from %s", stream.name)
-
+	
 	def _dump(self, stream=None):
 		if self._use_yaml:
 			import yaml
@@ -114,12 +110,12 @@ class Config(collections.MutableMapping):
 		elif stream:
 			return json.dump(self._data, stream, default=lambda obj: obj._data)
 		return json.dumps(self._data, default=lambda obj: obj._data)
-
+	
 	def _as_config(self, d):
 		if isinstance(d, collections.MutableMapping):
 			return self.__class__(autosave=self._autosave, _parent=self, _data=d)
 		return d
-
+	
 	def save(self, mode=0o600):
 		if self._parent is not None:
 			self._parent.save(mode=mode)
@@ -131,8 +127,7 @@ class Config(collections.MutableMapping):
 					if fh.read() == contents:
 						self._logger.debug("Config file %s unchanged", self.config_files[-1])
 						return
-			except Exception:
-				pass
+			except Exception: pass
 			try:
 				os.makedirs(config_dir)
 			except OSError as e:
@@ -142,40 +137,39 @@ class Config(collections.MutableMapping):
 				fh.write(contents)
 			os.chmod(self.config_files[-1], mode)
 			self._logger.debug("Saved config to %s", self.config_files[-1])
-
+	
 	def __getitem__(self, item):
 		if item not in self._data:
 			raise KeyError(item)
 		return self._data[item]
-
+	
 	def __setitem__(self, key, value):
 		self._data[key] = self._as_config(value)
-		if self._autosave:
-			self.save()
-
+		if self._autosave: self.save()
+	
 	def __getattr__(self, attr):
 		if attr not in self._data:
 			raise AttributeError(attr)
 		return self._data[attr]
-
+	
 	def __setattr__(self, attr, value):
 		if attr.startswith("_"):
 			object.__setattr__(self, attr, value)
 		else:
 			self.__setitem__(attr, value)
-
+	
 	def __delitem__(self, key):
 		del self._data[key]
-
+	
 	def __iter__(self):
 		for item in self._data:
 			yield item
-
+	
 	def __len__(self):
 		return len(self._data)
-
+	
 	def __repr__(self):
 		return repr(self._data)
-
+	
 	def __setstate__(self, state):
 		self.__dict__ = state
