@@ -29,6 +29,8 @@ Quinread supports quite a number of common file types. They are all listed below
 ### 0.41.
 
 * We now strip some trailing characters from the ends of certain HTML documents.
+* Changed the way we build, cutting the size of releases in half!
+* In certain Epub books, characters would be scattered across lines. This has been fixed.
 
 ### 0.40.
 
