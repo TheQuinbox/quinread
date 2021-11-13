@@ -34,7 +34,7 @@ class HtmlToText(HTMLParser):
 			if self.in_paragraph:
 				text = text.replace("\r\n", " ")
 				text = text.replace("\n", " ")
-			self._buf.append(text.strip())
+			self._buf.append(text.strip(" "))
 	
 	def handle_entityref(self, name):
 		if name in name2codepoint and not self.hide_output:
