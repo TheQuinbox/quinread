@@ -34,7 +34,8 @@ class HtmlToText(HTMLParser):
 			if self.in_paragraph:
 				text = text.replace("\r\n", " ")
 				text = text.replace("\n", " ")
-			self._buf.append(text.strip(" "))
+			text = re.sub(r"\s*\n\s*", "\n", text)
+			self._buf.append(text)
 	
 	def handle_entityref(self, name):
 		if name in name2codepoint and not self.hide_output:
@@ -53,4 +54,4 @@ def html_to_text(html):
 	parser = HtmlToText()
 	parser.feed(html)
 	parser.close()
-	return re.sub(r"\n\s*\n", "\n", parser.get_text()).strip()
+	return re.sub("\n\s", "\n", re.sub(r"\s\n\s", "\n", re.sub(r"\n\s*\n", "\n", parser.get_text()))).strip()
