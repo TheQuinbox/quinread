@@ -7,13 +7,16 @@ class HtmlToText(HTMLParser):
 		HTMLParser.__init__(self)
 		self._buf = []
 		self.hide_output = False
+		self.in_paragraph = False
 	
 	def handle_starttag(self, tag, attrs):
 		if tag in ("b", "i"):
 			return
-		elif tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li") and not self.hide_output:
+		if tag in ("p", "div"):
+			self.in_paragraph = True
+		if tag in ("p", "br", "div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li") and not self.hide_output:
 			self._buf.append("\n")
-		elif tag in ("script", "style", "title"):
+		if tag in ("script", "style", "title"):
 			self.hide_output = True
 	
 	def handle_startendtag(self, tag, attrs):
@@ -23,10 +26,15 @@ class HtmlToText(HTMLParser):
 	def handle_endtag(self, tag):
 		if tag in ("script", "style", "title"):
 			self.hide_output = False
+		if tag in ("p", "div"):
+			self.in_paragraph = False
 	
 	def handle_data(self, text):
 		if text and not self.hide_output:
-			self._buf.append(text)
+			if self.in_paragraph:
+				text = text.replace("\r\n", " ")
+				text = text.replace("\n", " ")
+			self._buf.append(text.strip())
 	
 	def handle_entityref(self, name):
 		if name in name2codepoint and not self.hide_output:
