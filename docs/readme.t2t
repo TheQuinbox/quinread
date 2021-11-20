@@ -4,8 +4,6 @@ Version 0.41
 %!target: html
 %!options: --toc -o documentation.html
 
-=Quinread=
-
 ==Introduction==
 
 Quinread is a fully accessible and powerful document reader, supporting many different file formats, and with many different features. Some highlights include:
@@ -15,6 +13,7 @@ Quinread is a fully accessible and powerful document reader, supporting many dif
 - Let's you jump directly between lines, no matter how far apart they are.
 - Supports many common file types, such as EPub books, RTF documents, and PDF documents.
 - And much more!
+-
 
 ==Supported file types==
 
@@ -29,6 +28,7 @@ Quinread supports quite a number of common file types. They are all listed below
 - RTF documents.
 - Plane text documents.
 - Docx files.
+-
 
 ==Changelog==
 
@@ -37,6 +37,7 @@ Quinread supports quite a number of common file types. They are all listed below
 - We now strip some trailing characters from the ends of certain HTML documents.
 - Changed the way we build, cutting the size of releases in half!
 - In certain Epub books, characters would be scattered across lines. This has been fixed.
+-
 
 ===0.40===
 
@@ -49,6 +50,7 @@ Quinread supports quite a number of common file types. They are all listed below
 - Fixed a small error if you tried to open text files containing certain characters.
 - You can now pass a path to the app when running from the command line to open it.
 - When parsing mobi, HTML, Markdown or EPUB, paragraphs are no longer sepperated with two blannk lines, unless explicitly told to do so.
+-
 
 ===0.30===
 
@@ -59,40 +61,49 @@ Quinread supports quite a number of common file types. They are all listed below
 - When using export to text, the default filename is now the document's name + .txt.
 - Fixed a small bug where sometimes the export to text dialog wouldn't close.
 - Completely rewrote the HTML parsing, leading to much nicer and faster parsing of epub, mobi, html and markdown documents.
+-
 
 ===0.28===
 
 - Fixed a really strange issue where open just flattly faile don some machines. Thanks Sam Taylor!
+-
 
 ===0.27===
 
 - Much better release ficility. This will make releasing much easier. Also adds back the readme to the last release.
+-
 
 ===0.26===
 
 - Added export to text!
+-
 
 ===0.25===
 
 - You're no longer focused on the OK button by default in the preferences dialog.
+-
 
 ===0.24===
 
 - With certain EPub books, chapters would sometimes show up twice. This has now been fixed.
+-
 
 ===0.23===
 
 - Added a readme!
 - Fixed a really weird bug where word count was reporting the incorrect number of words in a document.
+-
 
 ===0.22===
 
 - Fixed word count just... Not working.
 - Added an options dialog. It currently only let's you toggle if Quinread should load the previously opened document on startup.
+-
 
 ===0.21===
 
 - Quinread now loads your previously opened document on startup, and should set your position exactly where you were before. Needs tested.
+-
 
 ===0.20===
 
@@ -105,12 +116,15 @@ Quinread supports quite a number of common file types. They are all listed below
 - Added DOCX reading.
 - Added PDF reading.
 - Your previously loaded documenst now save, and save exactly where you were at within them!
+-
 
 ===0.12===
 
 - Added goto line.
+-
 
 ===0.11===
 
 - It's now possible to get the number of words in your opened document.
 - You can now press keys  such as control+O to open a document.
+-
