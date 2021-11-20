@@ -1,5 +1,8 @@
-%!target: xhtml
-%!options: --toc --toc-level=6 -o documentation.html
+Quinread.
+Version 0.41
+
+%!target: html
+%!options: --toc -o documentation.html
 
 =Quinread=
 
