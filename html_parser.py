@@ -53,4 +53,5 @@ def html_to_text(html):
 	parser = HtmlToText()
 	parser.feed(html)
 	parser.close()
+	# Bleck! Nested regex.
 	return re.sub("\n\s", "\n", re.sub(r"\s\n\s", "\n", re.sub(r"\n\s*\n", "\n", parser.get_text()))).strip()
