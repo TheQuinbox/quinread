@@ -108,8 +108,6 @@ class MainFrame(wx.Frame):
 			return ""
 		if path.lower().endswith(".txt"):
 			document = TextDocument(path)
-		elif path.lower().endswith(".txt"):
-			document = TextDocument(path)
 		elif path.lower().endswith(".pdf"):
 			document = PdfDocument(path)
 		elif path.lower().endswith(".docx"):
