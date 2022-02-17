@@ -8,8 +8,7 @@ class HtmlDocument(BaseDocument):
 	def read(self):
 		self.document = open(self.path, "r", encoding="utf-8")
 		text = self.document.read()
-		final = html_parser.html_to_text(text)
-		return final
+		return html_parser.html_to_text(text)
 	
 	def close(self):
 		self.document.close()

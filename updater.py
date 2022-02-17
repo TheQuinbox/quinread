@@ -12,8 +12,7 @@ def update_check(app, silent):
 			dlg.Destroy()
 			if result == wx.ID_YES:
 				webbrowser.open(i["browser_download_url"])
-		else:
-			if not silent:
-				wx.MessageBox("No updates available! The latest version of the program is " + latest["tag_name"], "No update available")
+		elif not silent:
+			wx.MessageBox("No updates available! The latest version of the program is " + latest["tag_name"], "No update available")
 	except Exception as e:
 		raise e

@@ -7,8 +7,7 @@ class DocxDocument(BaseDocument):
 	
 	def read(self):
 		self.document = docx.Document(self.path)
-		full_text = []
-		for para in self.document.paragraphs: full_text.append(para.text)
+		full_text = [para.text for para in self.document.paragraphs]
 		return "\n".join(full_text)
 	
 	def close(self):

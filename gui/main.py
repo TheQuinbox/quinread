@@ -75,8 +75,7 @@ class MainFrame(wx.Frame):
 		self.panel.Layout()
 		if self.app.config.last_loaded_path != "" and self.app.config.load_previous:
 			text = self.load_file(self.app.config.last_loaded_path)
-			if text == "": pass
-			else:
+			if text != "":
 				self.reader.SetValue(text)
 				if self.path not in self.app.config.loaded_documents:
 					self.app.config.loaded_documents[self.path] = 0
@@ -86,8 +85,7 @@ class MainFrame(wx.Frame):
 				self.reader.Enable(True)
 		if self.args != [] and len(self.args) == 2:
 			text = self.load_file(self.args[1])
-			if text == "": pass
-			else:
+			if text != "":
 				self.reader.SetValue(text)
 				if self.path not in self.app.config.loaded_documents:
 					self.app.config.loaded_documents[self.path] = 0
@@ -172,9 +170,8 @@ class MainFrame(wx.Frame):
 			return
 		if dialog.ShowModal() == wx.ID_OK:
 			path = dialog.GetPath()
-			f = open(path, "w")
-			f.write(self.reader.GetValue())
-			f.close()
+			with open(path, "w") as f:
+				f.write(self.reader.GetValue())
 		dialog.Destroy()
 	
 	def on_about(self, event=None):

@@ -35,9 +35,9 @@ class Config(collections.MutableMapping):
 	
 	@property
 	def config_files(self):
-		if not self._custom_path == None: return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
+		if not self._custom_path is None: return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
 		config_files = [os.path.join(self._site_config_home, self._name, "config.yml" if self._use_yaml else "config.json"), os.path.join(self._user_config_home, self._name, "config.yml" if self._use_yaml else "config.json")]
-		config_var = self._name.upper() + "_CONFIG_FILE"
+		config_var = f'{self._name.upper()}_CONFIG_FILE'
 		if config_var in os.environ: config_files.extend(os.environ[config_var].split(":"))
 		return config_files
 	
@@ -162,8 +162,7 @@ class Config(collections.MutableMapping):
 		del self._data[key]
 	
 	def __iter__(self):
-		for item in self._data:
-			yield item
+		yield from self._data
 	
 	def __len__(self):
 		return len(self._data)

@@ -10,8 +10,7 @@ class MarkdownDocument(BaseDocument):
 		self.document = open(self.path, "r")
 		text = self.document.read()
 		html = markdown.markdown(text)
-		final = html_parser.html_to_text(html)
-		return final
+		return html_parser.html_to_text(html)
 	
 	def close(self):
 		self.document.close()
