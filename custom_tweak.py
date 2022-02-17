@@ -35,7 +35,7 @@ class Config(collections.MutableMapping):
 	
 	@property
 	def config_files(self):
-		if not self._custom_path is None: return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
+		if self._custom_path is not None: return [os.path.join(self._custom_path, self._name + ".yml" if self._use_yaml else self._name + ".json")]
 		config_files = [os.path.join(self._site_config_home, self._name, "config.yml" if self._use_yaml else "config.json"), os.path.join(self._user_config_home, self._name, "config.yml" if self._use_yaml else "config.json")]
 		config_var = f'{self._name.upper()}_CONFIG_FILE'
 		if config_var in os.environ: config_files.extend(os.environ[config_var].split(":"))
