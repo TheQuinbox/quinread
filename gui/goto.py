@@ -37,7 +37,7 @@ class GotoDialog(wx.Dialog):
 		if line <= self.frame.reader.GetNumberOfLines() and line > 0:
 			pos = self.frame.reader.XYToPosition(0, line - 1)
 			self.frame.reader.SetInsertionPoint(pos)
-			self.Destroy()
 		else:
 			wx.MessageBox("Invalid line entered.", "Error", wx.ICON_ERROR)
-			self.Destroy()
+
+		self.Destroy()

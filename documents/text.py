@@ -6,8 +6,7 @@ class TextDocument(BaseDocument):
 	
 	def read(self):
 		self.document = open(self.path, "r", encoding="utf-8")
-		text = self.document.read()
-		return text
+		return self.document.read()
 	
 	def close(self):
 		self.document.close()
